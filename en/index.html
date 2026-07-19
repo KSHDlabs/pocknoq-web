@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Pocknoq — Connection you can feel</title>
-<meta name="description" content="Pocknoq is a two-way fandom companion device for K-pop fans. Meaningful moments arrive as a knock (haptics), light, and sound — and fans knock back. Designed so Deaf and blind fans share the same moment. By KSHD.">
+<meta name="description" content="Pocknoq is a two-way fandom companion device for fans. A moment arrives as a knock; press to play it as sound, with light and vibration in time — and fans knock back. Designed so Deaf and blind fans share the same moment. By KSHD.">
 <meta property="og:title" content="Pocknoq — Connection you can feel">
-<meta property="og:description" content="Your favorite artist's moment arrives as a knock at your fingertips. A two-way fandom companion — first a knock, then a knock back.">
-<meta property="og:image" content="https://pocknoq.com/img/scene.png">
+<meta property="og:description" content="Your favorite artist's moment arrives as a knock. A two-way fandom companion — first a knock, then a knock back.">
+<meta property="og:image" content="https://pocknoq.com/img/scene-concert.jpg">
 <meta property="og:url" content="https://pocknoq.com/en/">
 <meta property="og:type" content="website">
 <link rel="alternate" hreflang="ko" href="https://pocknoq.com/">
@@ -73,7 +73,8 @@ header.scrolled{background:rgba(251,245,233,.85);backdrop-filter:blur(16px) satu
 .hero::after{content:"";position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(rgba(231,166,46,.25) 1px,transparent 1.6px);background-size:26px 26px;mask-image:radial-gradient(70% 60% at 75% 30%,#000 0%,transparent 70%)}
 .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:36px;align-items:center;width:100%;position:relative;z-index:2}
 .hero h1{font-size:clamp(48px,7.6vw,104px);line-height:.98;margin:26px 0 0;color:var(--ink);text-wrap:balance}
-.hero h1 .hl{color:var(--gold)}
+.hero h1 .hl{color:#D6941F}
+.hero h1 .hl.soft{color:var(--gold)}
 .hero .kolead{font-size:clamp(18px,2.2vw,24px);font-weight:800;color:var(--dk);margin-top:26px}
 .hero .lead{font-size:clamp(15.5px,1.7vw,18px);color:var(--muted);max-width:44ch;margin:12px 0 0;line-height:1.75}
 .hero-cta{display:flex;gap:13px;margin-top:34px;flex-wrap:wrap}
@@ -81,7 +82,7 @@ header.scrolled{background:rgba(251,245,233,.85);backdrop-filter:blur(16px) satu
 .hero-meta span{font-size:12.5px;font-weight:700;color:var(--gold-d);border:1.5px solid var(--line);background:rgba(255,255,255,.7);border-radius:999px;padding:8px 15px}
 .stage{position:relative;display:flex;justify-content:center;align-items:flex-end;min-height:480px}
 .stage::before{content:"";position:absolute;bottom:6%;width:88%;aspect-ratio:2.6;border-radius:50%;background:radial-gradient(closest-side,rgba(247,222,159,.95),rgba(247,222,159,.35) 55%,transparent 75%);filter:blur(14px)}
-.stage img{width:min(400px,86%);position:relative;z-index:2;filter:drop-shadow(0 34px 50px rgba(150,100,20,.35));border-radius:28px}
+.stage img{width:auto;max-width:min(500px,46vw);max-height:64vh;position:relative;z-index:2;filter:drop-shadow(0 30px 44px rgba(150,100,20,.32))}
 .float{animation:float 6.5s ease-in-out infinite}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
 .scrollcue{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);font-size:10.5px;letter-spacing:.26em;color:var(--muted);display:flex;flex-direction:column;align-items:center;gap:8px;z-index:3}
@@ -107,7 +108,7 @@ header.scrolled{background:rgba(251,245,233,.85);backdrop-filter:blur(16px) satu
 .what-chips span{border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:9px 18px;font-size:13.5px;font-weight:700;color:var(--dk);box-shadow:var(--sh-sm)}
 
 /* PROBLEM */
-.problem-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(36px,5vw,80px);align-items:center;margin-top:26px}
+.problem-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(36px,5vw,72px);align-items:start;margin-top:38px}
 .quotes{display:grid;gap:14px}
 .quote{background:#fff;border:1px solid var(--line);border-left:4px solid var(--butter);border-radius:18px;padding:20px 22px;box-shadow:var(--sh-sm)}
 .quote p{font-size:15.5px;font-weight:600;color:var(--dk)}
@@ -238,15 +239,60 @@ footer{background:var(--cream2);border-top:1px solid var(--line);padding:38px 0;
   .marq-track{animation:none}
 }
 
+/* APP */
+.appgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:52px}
+.appcard{background:#fff;border-radius:24px;padding:28px 24px;box-shadow:var(--sh-card);border:1px solid var(--line)}
+.appcard .ic{width:56px;height:56px;border-radius:16px;background:linear-gradient(135deg,#fff,var(--butter));display:grid;place-items:center;font-size:26px;box-shadow:inset 0 0 0 1px var(--line);margin-bottom:16px}
+.appcard h3{font-size:17px;font-weight:800;margin-bottom:4px}
+.appcard .e{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-d);font-weight:700;display:block;margin-bottom:8px}
+.appcard ul{list-style:none;display:grid;gap:8px;margin-top:12px}
+.appcard li{font-size:13.5px;color:var(--dk);font-weight:600;padding-left:15px;position:relative;line-height:1.5}
+.appcard li::before{content:"";position:absolute;left:2px;top:8px;width:6px;height:6px;border-radius:50%;background:var(--gold)}
+.app-note{margin-top:28px;text-align:center;font-size:14px;color:var(--muted)}
+.app-note b{color:var(--gold-d)}
+
+/* EDITIONS */
+.ed-figure{margin:50px auto 0;max-width:740px;border-radius:30px;overflow:hidden;box-shadow:var(--sh-card);border:1px solid var(--line);background:#fff;padding:26px 26px 20px}
+.ed-figure img{width:100%;border-radius:16px}
+.ed-cap{font-size:12.5px;color:var(--muted);margin-top:14px;text-align:center;line-height:1.6}
+.ed-points{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:26px}
+.ed-point{background:#fff;border-radius:20px;padding:24px;border:1px solid var(--line);box-shadow:var(--sh-sm)}
+.ed-point .e{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-d);font-weight:800}
+.ed-point h4{font-size:16.5px;font-weight:800;margin:6px 0}
+.ed-point p{font-size:13.5px;color:var(--muted);line-height:1.6}
+
+/* BOARDS */
+.boards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:52px}
+.board{border-radius:20px;overflow:hidden;box-shadow:var(--sh-card);border:1px solid var(--line);background:#fff;transition:transform .25s,box-shadow .25s}
+.board:hover{transform:translateY(-5px);box-shadow:var(--glow)}
+.board img{width:100%;height:auto;display:block}
+.board .bcap{padding:15px 18px}
+.board .bcap span{display:block;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-d);font-weight:800;margin-bottom:4px}
+.board .bcap b{font-size:15px;font-weight:800;color:var(--ink)}
+.boards-note{margin-top:22px;text-align:center;font-size:13px;color:var(--muted)}
+
+/* STORY ILLUSTRATION */
+.story-fig{margin:44px 0 0;border-radius:24px;overflow:hidden;border:1px solid var(--line);box-shadow:var(--sh-card);background:#fff}
+.story-fig img{width:100%;display:block}
+.story-cap{text-align:center;font-size:13.5px;color:var(--muted);margin-top:14px}
+.story-cap b{color:var(--gold-d)}
+
+/* LOGO LOCKUP */
+.logo-lockup{display:block;width:min(300px,72%)}
+.foot .flogo{width:160px;height:auto}
+
 @media(max-width:900px){
   .hero-grid,.problem-grid,.inc-grid{grid-template-columns:1fr}
   .stage{min-height:380px;order:-1}
   .senses{grid-template-columns:1fr}
   .steps,.tech-grid{grid-template-columns:1fr 1fr}
   .lineup{grid-template-columns:1fr}
+  .appgrid{grid-template-columns:1fr 1fr}
+  .ed-points,.boards{grid-template-columns:1fr}
 }
 @media(max-width:560px){
   .steps,.tech-grid{grid-template-columns:1fr}
+  .appgrid{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -273,9 +319,9 @@ footer{background:var(--cream2);border-top:1px solid var(--line);padding:38px 0;
   <div class="wrap hero-grid">
     <div>
       <span class="kicker"><span class="chip">NEW</span> Fandom Companion Device</span>
-      <h1 class="en">First a knock.<br>Then a <span class="hl">knock back.</span></h1>
-      <p class="kolead">Your favorite's moment arrives as a knock at your fingertips.</p>
-      <p class="lead">Pocknoq is a <b style="color:var(--dk)">fandom companion device</b> for K-pop fans. It picks out only the moments that matter and delivers them as a knock (haptics), light, and sound — and you knock back. Not a one-way alert, but a connection that travels both ways.</p>
+      <h1 class="en">First a<br><span class="hl soft">knock.</span><br>Then a<br><span class="hl">knock back.</span></h1>
+      <p class="kolead">Your favorite's moment arrives as a knock.</p>
+      <p class="lead">Pocknoq is a <b style="color:var(--dk)">fandom companion device</b> for fans. Your artist can reach you directly, and a server picks out only the moments that matter — both arrive as a knock. Press it, and it plays as sound, with vibration and light in time. You knock back, and your reply travels to the artist, who can answer in return.</p>
       <div class="hero-cta">
         <a class="btn btn-primary" href="#lineup">See the lineup →</a>
         <a class="btn btn-ghost" href="#why">Why we built it</a>
@@ -287,7 +333,7 @@ footer{background:var(--cream2);border-top:1px solid var(--line);padding:38px 0;
       </div>
     </div>
     <div class="stage">
-      <img class="float" src="/img/kino-hero.png" alt="Pocknoq Desk — a cream companion device with a heart antenna and a softly glowing light band" width="406" height="648">
+      <img class="float" src="/img/hero-device.png" alt="Pocknoq — a yellow companion device with a heart antenna, a pixel face, and a softly glowing light band" width="733" height="985">
     </div>
   </div>
   <div class="scrollcue">SCROLL<i></i></div>
@@ -311,11 +357,11 @@ footer{background:var(--cream2);border-top:1px solid var(--line);padding:38px 0;
   <div class="wrap center">
     <p class="what-eyebrow rv">What is Pocknoq</p>
     <h2 class="what-def rv">Pocknoq is a <b>fandom companion device</b> that lets you feel your favorite artist's moments — with your body, not just your screen.</h2>
-    <p class="sub rv" style="margin-left:auto;margin-right:auto;margin-top:18px">A comeback drops, a livestream starts, a new message lands — and instead of one more notification on a screen, a small companion at your side taps your fingertips. Tap it back, and your knock travels in return. If a light stick belongs to the concert hall, Pocknoq belongs to every day.</p>
+    <p class="sub rv" style="margin-left:auto;margin-right:auto;margin-top:18px">A comeback drops, a livestream starts, a new message lands — and instead of one more notification on a screen, a small companion at your side knocks to reach you. Press it and the moment plays as sound, with light and vibration in time. Tap it back, and your reply travels to the artist in return.</p>
     <div class="what-chips rv">
       <span>👆 Two-way Knock Back</span>
       <span>💛 Touch + Light + Sound</span>
-      <span>🤫 Non-voice · No microphone</span>
+      <span>🤫 No mic · never listens in</span>
       <span>☁️ Curated in the cloud</span>
     </div>
   </div>
@@ -326,18 +372,19 @@ footer{background:var(--cream2);border-top:1px solid var(--line);padding:38px 0;
   <div class="wrap">
     <div class="rv">
       <span class="kicker"><span class="chip">A</span> The Problem</span>
-      <h2 class="display en">A moment only<br><span class="hl">some</span> can receive</h2>
-      <p class="kosub">Fandom's biggest moments arrive through a single sense — and not every fan has that sense.</p>
+      <h2 class="display en">The moment<br><span class="hl">slips away</span></h2>
+      <p class="kosub">A bond stuck behind a screen, moments buried in a flood of news — and fans pushed outside it.</p>
     </div>
     <div class="problem-grid">
       <div class="rv">
-        <p class="sub">A comeback announcement. A livestream going live. A new post. Today, fandom delivers these moments through screens and sound alone. For a fan who can't see the screen — or a fan who can't hear — the moment simply passes by. And with hundreds of notifications a day, the ones that truly matter drown in the noise.</p>
-        <p class="sub">So we changed the question — <b style="color:var(--dk)">"If we redesign how the moment arrives, could no one be left out?"</b></p>
+        <p class="sub">Meeting your favorite always happens on the far side of a screen. Likes and comments that vanish as you scroll — nothing you can hold, and the sense of being close fades the moment the screen goes dark.</p>
+        <p class="sub">And the news never stops — hundreds of alerts a day. Comebacks, lives, messages — the moments that truly matter get buried in the flood and simply pass by.</p>
+        <p class="sub">And when a moment comes only through a screen and sound, some fans can't receive it at all. So we changed the question — <b style="color:var(--dk)">if we redesign how the moment arrives, could no one be left out?</b></p>
       </div>
       <div class="quotes rv">
-        <div class="quote"><p>"The whole arena turned one color — but someone never saw that light."</p><span>A moment that arrived only through sight</span></div>
-        <div class="quote"><p>"The comeback rang out everywhere — but for someone, it passed in silence."</p><span>A moment that arrived only through sound</span></div>
-        <div class="quote"><p>"It always came one way — and if that way wasn't your sense, it never arrived at all."</p><span>One sense, fans left behind</span></div>
+        <div class="quote"><p>"I can stare at my phone all day, and still nothing stays in my hands."</p><span>A bond that lives only on a screen</span></div>
+        <div class="quote"><p>"I always hear the news long after — it's all buried under alerts."</p><span>Lost in the flood of news</span></div>
+        <div class="quote"><p>"When a moment reaches you only one way, someone is always left outside it."</p><span>The fan left behind</span></div>
         <p class="problem-note">* Illustrative statements of the problem — not actual quotes.</p>
       </div>
     </div>
@@ -355,21 +402,21 @@ footer{background:var(--cream2);border-top:1px solid var(--line);padding:38px 0;
     <div class="senses">
       <div class="sense rv">
         <div class="ic">👆</div>
-        <span class="e">Touch</span>
+        <span class="e">Touch — the knock</span>
         <h3>A knock you can feel</h3>
-        <p>A vibration knock at your fingertips. Each kind of moment has its own rhythm — so you know, without looking or listening.</p>
+        <p>The device knocks to bring the moment. Each kind of moment has its own rhythm — so you know it's here, without looking or listening.</p>
       </div>
       <div class="sense rv">
         <div class="ic">✨</div>
-        <span class="e">Light</span>
-        <h3>A band of light</h3>
-        <p>A ring of light that softly swells with the moment. On your desk or in a dark room, the moment catches your eye.</p>
+        <span class="e">Light — the band</span>
+        <h3>Light that moves with sound</h3>
+        <p>A ring of light whose brightness and rhythm move with the sound as it plays. On your desk or in a dark room, the moment catches your eye.</p>
       </div>
       <div class="sense rv">
-        <div class="ic">🔔</div>
-        <span class="e">Sound</span>
-        <h3>Sound</h3>
-        <p>A short chime or a voice reaction by your side. Choose just one channel, or turn on all three — the same moment arrives.</p>
+        <div class="ic">🔊</div>
+        <span class="e">Sound — playback</span>
+        <h3>The moment, out loud</h3>
+        <p>Press the knock and the message plays as sound — the artist's voice and audio. Vibration and light move in time with it.</p>
       </div>
     </div>
     <div class="bigline rv">
@@ -388,11 +435,15 @@ footer{background:var(--cream2);border-top:1px solid var(--line);padding:38px 0;
       <p class="kosub">Not hundreds of notifications a day — a few knocks that matter.</p>
     </div>
     <div class="steps">
-      <div class="step rv"><h3>A moment happens</h3><p>A comeback announcement, a livestream, a new message — your artist's activity sends a signal.</p></div>
-      <div class="step rv"><h3>Only what matters gets through</h3><p>A cloud-side decision engine picks out only the moments that matter to you — and gets sharper the more you use it.</p></div>
-      <div class="step rv"><h3>It arrives as a knock</h3><p>The moment unfolds as a knock rhythm, light, and sound matched to its kind. You choose the senses in the app.</p></div>
-      <div class="step rv"><h3>You knock back</h3><p>Knock Back — not an alert you only receive, but a reply from your fingertips that travels back.</p></div>
+      <div class="step rv"><h3>A moment arrives</h3><p>A message your artist sends directly, or an important moment a server picks from the daily noise, arrives as a signal.</p></div>
+      <div class="step rv"><h3>It knocks to alert you</h3><p>The device gives a gentle knock you feel — so you know it's here without looking at a screen.</p></div>
+      <div class="step rv"><h3>Press to unfold it</h3><p>Press it, and the moment plays as sound, with light and vibration moving in time. You choose the senses in the app.</p></div>
+      <div class="step rv"><h3>You knock back</h3><p>Knock Back — your reply gathers and travels to the artist, who can answer the fandom in return.</p></div>
     </div>
+    <figure class="story-fig rv">
+      <img src="/img/story-knockback.jpg" alt="Knock Back in three steps — tap it (TAP), the device knocks in reply (KNOCKS), and your favorite answers back (ANSWERS)">
+    </figure>
+    <p class="story-cap rv" style="max-width:760px;margin-left:auto;margin-right:auto"><b>Tap → knock → answer.</b> Tap your favorite and that knock gathers to the artist, and on the moments they choose, an answer comes back. Every reply voice is <b>really recorded by the artist</b> — the AI only picks which moment to send; it never speaks for them. Not a one-way alert, but a connection you give and get.</p>
     <p class="how-note rv">Pocknoq is <b>not a conversational AI speaker.</b> It never talks at you or listens in — it delivers the moment, and lets you answer with a knock.<br>The senses (touch · light · sound), the artists you wait for, the kinds of moments that matter — <b>fans decide all of it in the app.</b></p>
 
     <div class="mtable rv">
@@ -416,14 +467,14 @@ footer{background:var(--cream2);border-top:1px solid var(--line);padding:38px 0;
   <div class="wrap">
     <div class="center rv">
       <span class="kicker"><span class="chip">D</span> Lineup</span>
-      <h2 class="display en">Pocket &amp; <span class="hl">Desk</span></h2>
+      <h2 class="display en">Pocket &amp; <span class="hl">Home</span></h2>
       <p class="kosub">Not small and large — one that stays closer, one that feels fuller. The same bond, wherever you are.</p>
     </div>
     <div class="lineup">
       <article class="pcard rv">
-        <div class="pimg-frame" style="background:#F5EFF0">
+        <div class="pimg-frame" style="background:#F7E7C4">
           <span class="badge">01 · Pocket</span>
-          <img src="/img/pocket.png" alt="Pocknoq Pocket — a palm-sized portable device with a keyring charm, in lavender" style="object-fit:contain">
+          <img src="/img/render-pocket.jpg" alt="Pocknoq Pocket — a keyring-style portable device held in the crowd at a concert, with a pixel character screen and a knock you feel" style="object-fit:cover;object-position:center">
         </div>
         <div class="pbody">
           <h3>Pocket <small>portable · always with you</small></h3>
@@ -455,11 +506,11 @@ footer{background:var(--cream2);border-top:1px solid var(--line);padding:38px 0;
       </article>
       <article class="pcard rv">
         <div class="pimg-frame">
-          <span class="badge">02 · Desk</span>
-          <img src="/img/desk.png" alt="Pocknoq Desk — a stationary companion with a heart antenna and a glowing base" style="object-position:center 40%">
+          <span class="badge">02 · Home</span>
+          <img src="/img/render-home.jpg" alt="Pocknoq Home — a stationary companion on a desk, with pixel expressions, a mood light band, and a knock-back button on the side" style="object-fit:cover;object-position:center 42%">
         </div>
         <div class="pbody">
-          <h3>Desk <small>stationary · on your desk</small></h3>
+          <h3>Home <small>stationary · for your home</small></h3>
           <p class="pdesc">A little bigger than your fist — the friend who greets you when you come home. Moments unfold in full, with expressions, light, and sound.</p>
           <ul>
             <li><span class="dot">✓</span>Rich expressions and voice reactions carry the feeling of each moment</li>
@@ -484,11 +535,87 @@ footer{background:var(--cream2);border-top:1px solid var(--line);padding:38px 0;
   </div>
 </section>
 
+<!-- APP -->
+<section class="sec sec-paper" id="app">
+  <div class="wrap">
+    <div class="center rv">
+      <span class="kicker"><span class="chip">E</span> The App</span>
+      <h2 class="display en">Device &amp; app,<br><span class="hl">one system</span></h2>
+      <p class="kosub">Pocknoq isn't just a device — it runs as one system with a dedicated app.</p>
+      <p class="sub rv" style="margin-left:auto;margin-right:auto">If the device carries the moment as a knock, the app is where you grow it, collect it, and share it — raise your artist character, join the fandom, and tune it to your own senses.</p>
+    </div>
+    <div class="appgrid">
+      <div class="appcard rv">
+        <div class="ic">🌱</div>
+        <span class="e">Daily</span>
+        <h3>Everyday play</h3>
+        <ul>
+          <li>Raise an artist character that grows with your activity</li>
+          <li>Collect expressions &amp; moments</li>
+          <li>Decorate your room · color matching</li>
+        </ul>
+      </div>
+      <div class="appcard rv">
+        <div class="ic">🎪</div>
+        <span class="e">Events</span>
+        <h3>Event-linked</h3>
+        <ul>
+          <li>Season themes tied to albums &amp; lives</li>
+          <li>Comeback &amp; anniversary alarms</li>
+          <li>Live Knock in the live moment</li>
+        </ul>
+      </div>
+      <div class="appcard rv">
+        <div class="ic">🏆</div>
+        <span class="e">Together</span>
+        <h3>Fandom together</h3>
+        <ul>
+          <li>Fandom rankings · voting</li>
+          <li>Individual knocks become collective participation</li>
+          <li>Same moment, same belonging</li>
+        </ul>
+      </div>
+      <div class="appcard rv">
+        <div class="ic">🎚️</div>
+        <span class="e">Yours</span>
+        <h3>Personal · settings</h3>
+        <ul>
+          <li>Balance of vibration · light · sound (sensory profile)</li>
+          <li>Out · night · do-not-disturb modes</li>
+          <li>Voice packs · choose the artists you wait for</li>
+        </ul>
+      </div>
+    </div>
+    <p class="app-note rv">In a live moment, a <b>Live Knock</b> signal makes every device in the fandom light up and knock at once — so a room across the city becomes the same seat.</p>
+  </div>
+</section>
+
+<!-- EDITIONS -->
+<section class="sec sec-tint" id="editions">
+  <div class="wrap">
+    <div class="center rv">
+      <span class="kicker"><span class="chip">F</span> One platform, every IP</span>
+      <h2 class="display en">A device for<br><span class="hl">every world</span></h2>
+      <p class="kosub">Pocknoq isn't a generic gadget — it's born dedicated to each IP.</p>
+      <p class="sub rv" style="margin-left:auto;margin-right:auto">The server, app, and core hardware stay a shared platform — while the form, colors, voice, knock patterns, and app themes are made for each artist and character. Partners get a device carrying their own world, without building one from scratch.</p>
+    </div>
+    <figure class="ed-figure rv">
+      <img src="/img/editions.jpg" alt="One Pocknoq device shown as many colorway and costume editions tailored to different IP">
+      <figcaption class="ed-cap">Many editions born from one platform — colorways, costumes, characters. On an IP deal, a dedicated edition is made for that world. (Concept render.)</figcaption>
+    </figure>
+    <div class="ed-points">
+      <div class="ed-point rv"><span class="e">Shared</span><h4>Shared platform</h4><p>Server, app, core hardware, and patented tech stay the same — one validated engine underneath.</p></div>
+      <div class="ed-point rv"><span class="e">Tailored</span><h4>IP-tailored layer</h4><p>Form, colors, voice, knock patterns, and app themes are re-skinned for each artist and character.</p></div>
+      <div class="ed-point rv"><span class="e">Fast</span><h4>Fast rollout</h4><p>No building from scratch each time — a short cycle turns out a dedicated product per partner.</p></div>
+    </div>
+  </div>
+</section>
+
 <!-- INSIDE / TECH -->
 <section class="sec" id="inside">
   <div class="wrap">
     <div class="center rv">
-      <span class="kicker"><span class="chip">E</span> Only Pocknoq</span>
+      <span class="kicker"><span class="chip">G</span> Only Pocknoq</span>
       <h2 class="display en">Why <span class="hl">Pocknoq</span></h2>
       <p class="kosub">Six things set it apart — the strengths only this product has.</p>
     </div>
@@ -497,7 +624,7 @@ footer{background:var(--cream2);border-top:1px solid var(--line);padding:38px 0;
         <div class="ic">👆</div>
         <span class="e">Two-way</span>
         <h3>Knock Back, a round trip</h3>
-        <p>Notifications end one-way. Pocknoq comes back — you tap to reply, and the connection travels in both directions. Not a receive-only device.</p>
+        <p>Notifications end one-way. Pocknoq comes back — you tap to reply, your reply reaches the artist, and they can answer in return. Not a receive-only device.</p>
       </div>
       <div class="sense rv">
         <div class="ic">💛</div>
@@ -508,8 +635,8 @@ footer{background:var(--cream2);border-top:1px solid var(--line);padding:38px 0;
       <div class="sense rv">
         <div class="ic">🤫</div>
         <span class="e">No Mic</span>
-        <h3>Non-voice, no microphone</h3>
-        <p>It never talks at you or listens in. There is no always-on microphone — not a noisy AI speaker, but a quiet companion at your side.</p>
+        <h3>No mic, no listening in</h3>
+        <p>It never talks at you or listens in. There is no always-on microphone — not a noisy smart speaker, but a quiet companion at your side. It still plays sound and voice; there's simply no mic.</p>
       </div>
       <div class="sense rv">
         <div class="ic">☁️</div>
@@ -527,7 +654,7 @@ footer{background:var(--cream2);border-top:1px solid var(--line);padding:38px 0;
         <div class="ic">🏠</div>
         <span class="e">Everyday</span>
         <h3>A place in daily life</h3>
-        <p>A light stick lives in the concert hall; Pocknoq lives in your pocket and on your desk. The concert ends — the connection doesn't.</p>
+        <p>It brings the moment of a concert into every day — in your pocket and on your desk. The show ends; the connection doesn't.</p>
       </div>
     </div>
     <p class="trust rv">Precision linear haptics · <b>Validated by structural simulation</b> · <b>2 patent applications filed</b> for core technology · Fan community pilot planned for H2 2026</p>
@@ -543,7 +670,7 @@ footer{background:var(--cream2);border-top:1px solid var(--line);padding:38px 0;
       </div>
       <div>
         <div class="rv">
-          <span class="kicker"><span class="chip">F</span> Inclusive by design</span>
+          <span class="kicker"><span class="chip">H</span> Inclusive by design</span>
           <h2 class="display en">Every one in<br>the <span class="hl">same light</span></h2>
           <p class="kosub">When one moment can be felt by everyone, no one is left outside it.</p>
         </div>
@@ -566,8 +693,12 @@ footer{background:var(--cream2);border-top:1px solid var(--line);padding:38px 0;
         </div>
       </div>
     </div>
+    <figure class="story-fig rv">
+      <img src="/img/story-everyfan.jpg" alt="Seven fans receiving the same moment each in their own way — touch+light, touch+sound, all three, light+sound, touch, light, sound">
+    </figure>
+    <p class="story-cap rv" style="max-width:760px;margin-left:auto;margin-right:auto">Whichever sense it reaches you by — touch, light, or sound — <b>it's the same moment.</b> When one sense is hard to reach, the moment still arrives, whole, in its own way — no fan gets a smaller version.</p>
     <div class="scene rv">
-      <img src="/img/scene.png" alt="Fans gathered around a Pocknoq in warm light">
+      <img src="/img/scene-concert.jpg" alt="Fans sharing one moment in a golden concert crowd — a fan with a hearing aid, a fan in sunglasses, a fan holding a lightstick">
       <div class="veil"></div>
       <div class="stxt">
         <div class="en-h en">Same moment. Same belonging.</div>
@@ -581,30 +712,49 @@ footer{background:var(--cream2);border-top:1px solid var(--line);padding:38px 0;
 <section class="sec sec-tint" id="vision">
   <div class="wrap">
     <div class="center rv">
-      <span class="kicker"><span class="chip">G</span> Vision</span>
-      <h2 class="display en">Where this <span class="hl">goes</span></h2>
-      <p class="kosub">Starting from inclusion, becoming fandom's everyday object — what we're building next.</p>
+      <span class="kicker"><span class="chip">I</span> Vision</span>
+      <h2 class="display en">Every moment,<br><span class="hl">connected</span></h2>
+      <p class="kosub">Concerts, fan meetings, comebacks — reaching every moment of your favorite.</p>
     </div>
     <div class="senses">
       <div class="sense rv">
-        <div class="ic">🎪</div>
-        <span class="e">Live-linked</span>
-        <h3>Synced with the concert</h3>
-        <p>Cued to the venue's lighting, Pocknoq devices far beyond the arena light up together — so a room across the city becomes a seat in the crowd.</p>
+        <div class="ic">🎤</div>
+        <span class="e">Live · Access</span>
+        <h3>Feel the show, in person</h3>
+        <p>Cued to the stage, it renders the live in vibration, deep-bass resonance, and light. For a fan who can't easily hear, through vibration and light; for a fan who can't easily see, through vibration and sound — the same stage. (Pursued as barrier-free cooperation with organizers.)</p>
+      </div>
+      <div class="sense rv">
+        <div class="ic">🏠</div>
+        <span class="e">Online Live</span>
+        <h3>Live, from home</h3>
+        <p>For online and virtual lives, the Home unit fully syncs — light, sound, and resonance fill the room. So the nights you couldn't be in the crowd, you don't miss the moment.</p>
+      </div>
+      <div class="sense rv">
+        <div class="ic">💥</div>
+        <span class="e">Live Knock</span>
+        <h3>The fandom, in one moment</h3>
+        <p>During a live, a signal makes every device in the fandom glow and knock at once. Knock back instead of a "like," and the count of fans here right now gathers on screen.</p>
+      </div>
+      <div class="sense rv">
+        <div class="ic">💌</div>
+        <span class="e">Fan Events</span>
+        <h3>Fan meetings &amp; signings, kept</h3>
+        <p>Bring your Home on a special day: connect through the two-way Knock Back, and keep that day's knock to replay at home. Confirmation that "my heart got through" — through vibration, no screen needed.</p>
       </div>
       <div class="sense rv">
         <div class="ic">🗓️</div>
         <span class="e">Seasonal</span>
-        <h3>Season &amp; comeback drops</h3>
-        <p>Every comeback season brings new knock patterns, new expressions, new light themes. The device stays the same — the connection keeps growing.</p>
+        <h3>Season &amp; comeback packs</h3>
+        <p>Every album and anniversary brings a theme pack — colors, expressions, knock patterns, light themes (over the air). The device stays the same; the connection keeps growing.</p>
       </div>
       <div class="sense rv">
         <div class="ic">🤝</div>
-        <span class="e">Official</span>
-        <h3>Official partnerships</h3>
-        <p>Official integrations with artists and agencies — an ecosystem where your favorite's real moments arrive as official data.</p>
+        <span class="e">Official IP</span>
+        <h3>Official IP editions</h3>
+        <p>Base it freely on your own favorite and your own colors. With an official IP, the form, voice, and themes become dedicated to that world — each IP born as its own device on one shared platform.</p>
       </div>
     </div>
+    <p class="how-note rv" style="margin-top:34px">* Some integrations are in development or depend on official partnerships. Remote linking of large offline concerts is a next step that requires securing rights.</p>
   </div>
 </section>
 
@@ -612,14 +762,14 @@ footer{background:var(--cream2);border-top:1px solid var(--line);padding:38px 0;
 <section class="sec sec-paper" id="team">
   <div class="wrap">
     <div class="center rv">
-      <span class="kicker"><span class="chip">H</span> Team</span>
+      <span class="kicker"><span class="chip">J</span> Team</span>
       <h2 class="display en">Team <span class="hl">KSHD</span></h2>
     </div>
     <div class="team-band rv">
       <div class="en-h en">Eight makers building<br>the <span class="hl">feelable</span> fandom</div>
-      <p>KSHD is a founding team of eight. Hardware design, firmware, and server engineering — plus brand design and business development — are all built in-house. Our design has been validated through structural analysis and simulation, physical prototypes are in progress, and we have filed 2 patent applications for the core technology. Fan community pilots begin in the second half of 2026.</p>
+      <p>KSHD is a founding team of eight. Hardware design, firmware, and server engineering — plus motion and visual design, brand, and business development — are all built in-house. Our design has been validated through structural analysis and simulation, physical prototypes are in progress, and we have filed 2 patent applications for the core technology. Fan community pilots begin in the second half of 2026.</p>
       <div class="team-tags">
-        <span>Hardware</span><span>Firmware</span><span>Software · Server</span><span>Product Design</span><span>Brand</span><span>Business</span>
+        <span>Hardware</span><span>Firmware</span><span>Software · Server</span><span>Product · PM</span><span>Motion Design</span><span>Visual Design</span><span>Brand · BD</span>
       </div>
       <p class="roadmap"><b>Now</b>Prototype validation<i>→</i><b>H2 2026</b>Fan community pilot<i>→</i><b>Next</b>Launch preparation</p>
     </div>
@@ -629,13 +779,13 @@ footer{background:var(--cream2);border-top:1px solid var(--line);padding:38px 0;
 <!-- CONTACT -->
 <section class="sec contact" id="contact">
   <div class="wrap">
-    <img class="contact-mascot rv" src="/img/kino-smile.png" alt="" aria-hidden="true">
+    <img class="logo-lockup rv" src="/img/logo-lockup.png" alt="KSHD Pocknoq — Feel Connected" style="margin:0 auto 14px">
     <div class="rv">
-      <span class="kicker"><span class="chip">I</span> Contact</span>
+      <span class="kicker"><span class="chip">K</span> Contact</span>
       <h2 class="display en">Knock <span class="hl">first</span></h2>
       <p class="kosub">Collaboration, advice, or just a hello — knock first, about anything.</p>
     </div>
-    <a class="btn mail rv" href="mailto:daesung@pocknoq.com">💌 daesung@pocknoq.com</a>
+    <a class="btn mail rv" href="mailto:kshd@pocknoq.com">💌 kshd@pocknoq.com</a>
     <div class="sns rv">
       <a href="https://instagram.com/pocknoq" target="_blank" rel="noopener">Instagram</a>
       <a href="https://x.com/pocknoq" target="_blank" rel="noopener">X</a>
@@ -647,7 +797,7 @@ footer{background:var(--cream2);border-top:1px solid var(--line);padding:38px 0;
 
 <footer>
   <div class="wrap foot">
-    <div class="fbrand">pockn<span style="color:var(--gold)">o</span>q<span class="knock">)))</span></div>
+    <img class="flogo" src="/img/logo-lockup.png" alt="KSHD Pocknoq — Feel Connected">
     <p>© 2026 KSHD. All rights reserved. · Connection you can feel.</p>
   </div>
 </footer>
