@@ -214,6 +214,12 @@ header.scrolled{background:rgba(251,245,233,.85);backdrop-filter:blur(16px) satu
 .roadmap{margin-top:28px;position:relative;z-index:2;color:rgba(255,248,232,.85);font-size:14px;font-weight:600}
 .roadmap b{color:var(--butter);margin-right:6px}
 .roadmap i{font-style:normal;color:rgba(247,222,159,.55);margin:0 12px}
+.company-card{margin-top:34px;position:relative;z-index:2;border-top:1px solid rgba(247,222,159,.28);padding-top:26px}
+.company-card h3{font-size:12.5px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--butter)}
+.company-card dl{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:15px 34px;margin-top:18px}
+.company-card dt{font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:rgba(247,222,159,.68)}
+.company-card dd{margin:4px 0 0;font-size:14.5px;font-weight:600;color:rgba(255,248,232,.9);line-height:1.6}
+.company-card dd a{color:var(--butter);text-decoration:underline;text-underline-offset:3px}
 
 /* CONTACT */
 .contact{text-align:center}
@@ -766,12 +772,25 @@ footer{background:var(--cream2);border-top:1px solid var(--line);padding:38px 0;
       <h2 class="display en">Team <span class="hl">KSHD</span></h2>
     </div>
     <div class="team-band rv">
-      <div class="en-h en">Eight makers building<br>the <span class="hl">feelable</span> fandom</div>
-      <p>KSHD is a founding team of eight. Hardware design, firmware, and server engineering — plus motion and visual design, brand, and business development — are all built in-house. Our design has been validated through structural analysis and simulation, physical prototypes are in progress, and we have filed 2 patent applications for the core technology. Fan community pilots begin in the second half of 2026.</p>
+      <div class="en-h en">Five makers building<br>the <span class="hl">feelable</span> fandom</div>
+      <p>KSHD is a founding team of five, based in Seoul, South Korea. Hardware design, firmware, app and server engineering, AI, product management, brand, and business development are all handled in-house. Our design has been validated through structural analysis and simulation, physical prototypes are in progress, and we have filed 2 patent applications for the core technology. Fan community pilots begin in the second half of 2026.</p>
       <div class="team-tags">
-        <span>Hardware</span><span>Firmware</span><span>Software · Server</span><span>Product · PM</span><span>Motion Design</span><span>Visual Design</span><span>Brand · BD</span>
+        <span>Hardware</span><span>Firmware</span><span>Software · Server</span><span>AI</span><span>Product · PM</span><span>Brand · BD</span>
       </div>
       <p class="roadmap"><b>Now</b>Prototype validation<i>→</i><b>H2 2026</b>Fan community pilot<i>→</i><b>Next</b>Launch preparation</p>
+      <div class="company-card">
+        <h3>Company information</h3>
+        <dl>
+          <div><dt>Company</dt><dd>KSHD</dd></div>
+          <div><dt>Product</dt><dd>Pocknoq — a two-way fandom companion device</dd></div>
+          <div><dt>Official website</dt><dd>pocknoq.com is the official website of KSHD, named after our product.</dd></div>
+          <div><dt>Founder and CEO</dt><dd>Daesung Chu</dd></div>
+          <div><dt>Location</dt><dd>Seoul, South Korea</dd></div>
+          <div><dt>Team size</dt><dd>5</dd></div>
+          <div><dt>Stage</dt><dd>Pre-launch — prototype validation, 2 patent applications filed</dd></div>
+          <div><dt>Contact</dt><dd><a href="mailto:kshd@pocknoq.com">kshd@pocknoq.com</a></dd></div>
+        </dl>
+      </div>
     </div>
   </div>
 </section>
@@ -798,6 +817,7 @@ footer{background:var(--cream2);border-top:1px solid var(--line);padding:38px 0;
 <footer>
   <div class="wrap foot">
     <img class="flogo" src="/img/logo-lockup.png" alt="KSHD Pocknoq — Feel Connected">
+    <p>KSHD · Seoul, South Korea · <a href="mailto:kshd@pocknoq.com" style="color:inherit">kshd@pocknoq.com</a></p>
     <p>© 2026 KSHD. All rights reserved. · Connection you can feel.</p>
   </div>
 </footer>
