@@ -90,7 +90,22 @@ header.scrolled{background:rgba(251,245,233,.85);backdrop-filter:blur(16px) satu
 .hero-meta span{font-size:12.5px;font-weight:700;color:var(--gold-d);border:1.5px solid var(--line);background:rgba(255,255,255,.7);border-radius:999px;padding:8px 15px}
 .stage{position:relative;display:flex;justify-content:center;align-items:flex-end;min-height:480px}
 .stage::before{content:"";position:absolute;bottom:6%;width:88%;aspect-ratio:2.6;border-radius:50%;background:radial-gradient(closest-side,rgba(247,222,159,.95),rgba(247,222,159,.35) 55%,transparent 75%);filter:blur(14px)}
-.stage img{width:auto;max-width:min(500px,46vw);max-height:64vh;position:relative;z-index:2;filter:drop-shadow(0 30px 44px rgba(150,100,20,.32))}
+.stage img{width:auto;max-width:min(500px,46vw);max-height:64vh;position:relative;z-index:2;filter:drop-shadow(0 30px 44px rgba(150,100,20,.32));cursor:pointer}
+.stage img.hit{animation:knockhit .45s ease}
+@keyframes knockhit{0%{transform:none}30%{transform:translateY(3px) scale(.97)}65%{transform:translateY(-4px) scale(1.015)}100%{transform:none}}
+.stage .ring{position:absolute;left:50%;top:44%;width:130px;height:130px;margin:-65px 0 0 -65px;border:2px solid rgba(231,166,46,.55);border-radius:50%;z-index:1;pointer-events:none;animation:knock 3.4s ease-out infinite}
+.stage .ring.r2{animation-delay:1.7s}
+@keyframes knock{0%{transform:scale(.5);opacity:0}12%{opacity:.7}100%{transform:scale(3.1);opacity:0}}
+.knockhint{position:absolute;top:5%;right:2%;z-index:3;font-size:12.5px;font-weight:700;color:var(--gold-d);background:rgba(255,255,255,.78);border:1.5px solid var(--line);border-radius:999px;padding:8px 15px;box-shadow:var(--sh-sm)}
+.hero-grid>div:first-child>*{opacity:0;animation:rise .7s ease forwards}
+.hero-grid>div:first-child>*:nth-child(1){animation-delay:.05s}
+.hero-grid>div:first-child>*:nth-child(2){animation-delay:.15s}
+.hero-grid>div:first-child>*:nth-child(3){animation-delay:.28s}
+.hero-grid>div:first-child>*:nth-child(4){animation-delay:.4s}
+.hero-grid>div:first-child>*:nth-child(5){animation-delay:.52s}
+.hero-grid>div:first-child>*:nth-child(6){animation-delay:.62s}
+.stage{opacity:0;animation:rise .9s ease .3s forwards}
+@keyframes rise{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
 .float{animation:float 6.5s ease-in-out infinite}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
 .scrollcue{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);font-size:10.5px;letter-spacing:.26em;color:var(--muted);display:flex;flex-direction:column;align-items:center;gap:8px;z-index:3}
@@ -251,6 +266,9 @@ footer{background:var(--cream2);border-top:1px solid var(--line);padding:38px 0;
   .rv{opacity:1;transform:none;transition:none}
   .float{animation:none}
   .marq-track{animation:none}
+  .stage .ring{display:none}
+  .hero-grid>div:first-child>*,.stage{opacity:1;animation:none}
+  .stage img.hit{animation:none}
 }
 
 /* APP */
@@ -335,7 +353,7 @@ footer{background:var(--cream2);border-top:1px solid var(--line);padding:38px 0;
       <span class="kicker"><span class="chip">NEW</span> Fandom Companion Device</span>
       <h1 class="en">First a<br><span class="hl soft">knock.</span><br>Then a<br><span class="hl">knock back.</span></h1>
       <p class="kolead">최애의 순간이, 노크로 도착합니다.</p>
-      <p class="lead">Pocknoq은 팬을 위한 <b style="color:var(--dk)">팬덤 컴패니언 디바이스</b>입니다. 최애의 메시지와 소식이 노크로 도착하고, 누르면 소리로 흘러나오며 진동과 빛이 그 소리에 맞춰 함께 반응합니다. 당신은 두드려 되받고, 그 마음은 아티스트에게 닿습니다 — 받기만 하는 알림이 아니라, 주고받는 교감.</p>
+      <p class="lead">Pocknoq은 팬을 위한 <b style="color:var(--dk)">팬덤 컴패니언 디바이스</b>입니다. 최애의 메시지와 소식이 노크로 도착하고, 누르면 소리로 흘러나오며 진동과 빛이 그 소리에 맞춰 함께 반응합니다. 당신은 두드려 되받고, 그 마음은 아티스트에게 닿습니다 — 받기만 하는 알림이 아니라, 주고받는 교감. 전용 앱은 이 교감을 캐릭터 육성과 팬덤 참여로 넓혀요.</p>
       <div class="hero-cta">
         <a class="btn btn-primary" href="#lineup">라인업 보기 →</a>
         <a class="btn btn-ghost" href="#why">왜 만들었나요?</a>
@@ -343,11 +361,14 @@ footer{background:var(--cream2);border-top:1px solid var(--line);padding:38px 0;
       <div class="hero-meta">
         <span>👆 두드려 답하는 Knock Back</span>
         <span>💛 촉각 · 빛 · 소리 3감각</span>
+        <span>📱 기기 + 전용 앱, 하나의 시스템</span>
         <span>🤝 농·맹 팬 동등 포함 설계</span>
       </div>
     </div>
     <div class="stage">
+      <i class="ring" aria-hidden="true"></i><i class="ring r2" aria-hidden="true"></i>
       <img class="float" src="img/hero-device.png" alt="Pocknoq — 하트 안테나와 은은하게 빛나는 라이트 밴드, 픽셀 표정을 가진 노란색 컴패니언 디바이스" width="733" height="985">
+      <span class="knockhint" aria-hidden="true">👆 톡톡, 두드려 보세요</span>
     </div>
   </div>
   <div class="scrollcue">SCROLL<i></i></div>
@@ -481,17 +502,17 @@ footer{background:var(--cream2);border-top:1px solid var(--line);padding:38px 0;
   <div class="wrap">
     <div class="center rv">
       <span class="kicker"><span class="chip">D</span> Lineup</span>
-      <h2 class="display en">Pocket &amp; <span class="hl">Home</span></h2>
+      <h2 class="display en">Mini &amp; <span class="hl">Main</span></h2>
       <p class="kosub">작은 것과 큰 것이 아니라, 더 가까운 것과 더 충만한 것. 어디에 있든 같은 유대.</p>
     </div>
     <div class="lineup">
       <article class="pcard rv">
         <div class="pimg-frame" style="background:#F7E7C4">
-          <span class="badge">01 · Pocket</span>
-          <img src="img/render-pocket.jpg" alt="Pocknoq Pocket(휴대형) — 콘서트장에서 손에 든 키링형 디바이스, 픽셀 캐릭터 화면과 노크 진동" style="object-fit:cover;object-position:center">
+          <span class="badge">01 · Mini</span>
+          <img src="img/render-mini.jpg" alt="Pocknoq 미니(휴대형) — 콘서트장에서 손에 든 키링형 디바이스, 픽셀 캐릭터 화면과 노크 진동" style="object-fit:cover;object-position:center">
         </div>
         <div class="pbody">
-          <h3>포켓 <small>휴대형 · 늘 곁에</small></h3>
+          <h3>미니 <small>휴대형 · 늘 곁에</small></h3>
           <p class="pdesc">에어팟만 한 크기, 주머니에 쏙. 어디서든 최애가 먼저 톡톡 — 주머니 속 노크, 꺼내서 1초 힐끗, 다시 주머니에.</p>
           <ul>
             <li><span class="dot">✓</span>메시지가 오면 톡톡 진동 + 빛으로 알려줘요</li>
@@ -507,7 +528,7 @@ footer{background:var(--cream2);border-top:1px solid var(--line);padding:38px 0;
             <figure><img src="img/emo-5.png" alt="피곤해 픽셀 표정"><figcaption>피곤해</figcaption></figure>
           </div>
           <p class="pstrip-cap">1초 힐끗 — 지금 이 기분을 픽셀 표정으로</p>
-          <div class="pstrip"><img src="img/pocket-colors.png" alt="포켓 컬러 옵션 — 라벤더, 피치, 민트, 블랙"></div>
+          <div class="pstrip"><img src="img/mini-colors.png" alt="미니 컬러 옵션 — 라벤더, 피치, 민트, 블랙"></div>
           <p class="pstrip-cap">컬러 옵션 — 라벤더 · 피치 · 민트 · 블랙</p>
           <div class="pspacer"></div>
           <div class="pspec">
@@ -520,11 +541,11 @@ footer{background:var(--cream2);border-top:1px solid var(--line);padding:38px 0;
       </article>
       <article class="pcard rv">
         <div class="pimg-frame">
-          <span class="badge">02 · Home</span>
-          <img src="img/render-home.jpg" alt="Pocknoq 홈(가정용) — 책상 위 거치형, 픽셀 표정과 무드 라이트 밴드, 측면의 노크백 버튼" style="object-fit:cover;object-position:center 42%">
+          <span class="badge">02 · Main</span>
+          <img src="img/render-main.jpg" alt="Pocknoq 메인(가정용) — 책상 위 거치형, 픽셀 표정과 무드 라이트 밴드, 측면의 노크백 버튼" style="object-fit:cover;object-position:center 42%">
         </div>
         <div class="pbody">
-          <h3>홈 <small>가정용 · 책상 위</small></h3>
+          <h3>메인 <small>가정용 · 책상 위</small></h3>
           <p class="pdesc">주먹보다 조금 큰, 집에 오면 최애가 맞아주는 친구. 순간이 표정·빛·소리로 활짝 펼쳐집니다.</p>
           <ul>
             <li><span class="dot">✓</span>풍부한 표정과 목소리 리액션으로 순간의 감정을 전해요</li>
@@ -741,7 +762,7 @@ footer{background:var(--cream2);border-top:1px solid var(--line);padding:38px 0;
         <div class="ic">🏠</div>
         <span class="e">Online Live</span>
         <h3>집에서 즐기는 라이브</h3>
-        <p>온라인·버추얼 라이브는 집의 Home이 풀 연동 — 빛·소리·공명이 방을 채웁니다. 객석에 가지 못한 밤에도 같은 순간을 놓치지 않게.</p>
+        <p>온라인·버추얼 라이브는 집의 메인이 풀 연동 — 빛·소리·공명이 방을 채웁니다. 객석에 가지 못한 밤에도 같은 순간을 놓치지 않게.</p>
       </div>
       <div class="sense rv">
         <div class="ic">💥</div>
@@ -753,7 +774,7 @@ footer{background:var(--cream2);border-top:1px solid var(--line);padding:38px 0;
         <div class="ic">💌</div>
         <span class="e">Fan Events</span>
         <h3>팬미팅 · 팬사인회, 그날의 각인</h3>
-        <p>특별한 날 Home을 데려가면 두드리고 답하는 Knock Back으로 교감하고, 그날의 노크를 각인해 집에서 다시 재생합니다. 화면 없이 진동으로 '내 마음이 전해졌다'를.</p>
+        <p>특별한 날 메인을 데려가면 두드리고 답하는 Knock Back으로 교감하고, 그날의 노크를 각인해 집에서 다시 재생합니다. 화면 없이 진동으로 '내 마음이 전해졌다'를.</p>
       </div>
       <div class="sense rv">
         <div class="ic">🗓️</div>
@@ -835,6 +856,11 @@ const hd=document.getElementById('hd');
 addEventListener('scroll',()=>{hd.classList.toggle('scrolled',scrollY>10)},{passive:true});
 const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}})},{threshold:.12});
 document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+const dv=document.querySelector('.stage img');
+if(dv){
+  dv.addEventListener('pointerdown',()=>{dv.classList.remove('hit');void dv.offsetWidth;dv.classList.add('hit');if(navigator.vibrate)navigator.vibrate(35)},{passive:true});
+  dv.addEventListener('animationend',e=>{if(e.animationName==='knockhit')dv.classList.remove('hit')});
+}
 </script>
 </body>
 </html>
