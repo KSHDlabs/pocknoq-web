@@ -3,13 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#FDF6E7">
 <title>Pocknoq — Connection you can feel</title>
-<meta name="description" content="Pocknoq is a two-way fandom companion device for fans. A moment arrives as a knock; press to play it as sound, with light and vibration in time — and fans knock back. Designed so Deaf and blind fans share the same moment. By KSHD.">
+<meta name="description" content="Pocknoq is a two-way fandom companion device for fans. A moment arrives as a knock; press to play it as sound, with light and vibration in time — and fans knock back. Designed so Deaf and blind fans share the same moment. By CIELIEN.">
 <meta property="og:title" content="Pocknoq — Connection you can feel">
 <meta property="og:description" content="Your favorite artist's moment arrives as a knock. A two-way fandom companion — first a knock, then a knock back.">
 <meta property="og:image" content="https://pocknoq.com/img/scene-concert.jpg">
 <meta property="og:url" content="https://pocknoq.com/en/">
 <meta property="og:type" content="website">
+<link rel="canonical" href="https://pocknoq.com/en/">
 <link rel="alternate" hreflang="ko" href="https://pocknoq.com/">
 <link rel="alternate" hreflang="en" href="https://pocknoq.com/en/">
 <link rel="alternate" hreflang="x-default" href="https://pocknoq.com/">
@@ -21,43 +23,55 @@
 <style>
 :root{
   --cream:#FBF5E9;--cream2:#F7EEDC;--paper:#FFFDF7;
-  --butter:#F7DE9F;--gold:#E7A62E;--gold-d:#B87A16;--gold-dd:#8a5a0e;
-  --ink:#2A2416;--dk:#4a3d24;--muted:#8d7f63;
+  --butter:#F7DE9F;--gold:#E7A62E;--gold-d:#96600E;--gold-dd:#8a5a0e;--gold-t:#A76C12;
+  --ink:#2A2416;--dk:#4a3d24;--muted:#6F6247;
   --line:#eadfc6;--white:#fff;
   --glow:0 30px 70px -30px rgba(184,122,22,.45);
   --sh-sm:0 18px 40px -22px rgba(122,88,26,.35);
   --sh-card:0 26px 54px -30px rgba(122,88,26,.38);
   --maxw:1180px;
+  /* 아래 3개는 FAN FOR U 페이지와 공유하는 브랜드 패밀리 토큰 */
+  --ease:cubic-bezier(.32,.72,0,1);
+  --r-shell:26px;
+  --r-core:19px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Pretendard Variable',Pretendard,'Archivo',system-ui,'Malgun Gothic',sans-serif;color:var(--ink);background:var(--cream);line-height:1.66;-webkit-font-smoothing:antialiased;overflow-x:hidden;word-break:keep-all;overflow-wrap:break-word}
 a{color:inherit;text-decoration:none}
-img{max-width:100%;display:block}
-.wrap{max-width:var(--maxw);margin:0 auto;padding:0 26px}
+img{max-width:100%;height:auto;display:block}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 max(26px,env(safe-area-inset-right)) 0 max(26px,env(safe-area-inset-left))}
+section[id],main[id]{scroll-margin-top:88px}
 .en{font-family:'Anton','Archivo',sans-serif;font-weight:400;letter-spacing:.01em;text-transform:uppercase}
 h2.display{font-size:clamp(38px,6.4vw,84px);line-height:1.0;color:var(--ink);text-wrap:balance}
-h2.display .hl{color:var(--gold)}
+h2.display .hl{color:var(--gold-t)}
 .kicker{display:inline-flex;align-items:center;gap:8px;border:1.5px solid var(--gold);color:var(--gold-d);border-radius:999px;padding:7px 16px;font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;background:rgba(255,255,255,.6)}
 .kicker .chip{background:var(--gold);color:#fff;border-radius:6px;font-size:11px;padding:1px 7px;letter-spacing:.06em}
 .kosub{font-size:clamp(17px,2.1vw,22px);font-weight:700;color:var(--dk);margin-top:14px}
 .sub{font-size:clamp(15.5px,1.6vw,17.5px);color:var(--muted);max-width:60ch;line-height:1.75;margin-top:14px}
 .center{text-align:center}.center .sub,.center .kosub{margin-left:auto;margin-right:auto}
-.btn{display:inline-flex;align-items:center;gap:9px;font-weight:800;font-size:15.5px;padding:15px 30px;border-radius:999px;border:none;cursor:pointer;transition:transform .2s,box-shadow .25s}
-.btn-primary{background:linear-gradient(135deg,var(--gold),var(--gold-d));color:#fff;box-shadow:0 16px 34px -12px rgba(184,122,22,.75)}
+.btn{display:inline-flex;align-items:center;gap:12px;font-weight:800;font-size:15.5px;padding:14px 16px 14px 30px;border-radius:999px;border:none;cursor:pointer;transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
+/* 버튼 속 아이콘 원 — FAN FOR U 메일 버튼과 같은 구조 */
+.btn>.ic{width:30px;height:30px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;
+  font-size:15px;line-height:1;flex:0 0 auto;transition:transform .5s var(--ease)}
+.btn-primary>.ic{background:rgba(255,255,255,.34)}
+.btn-ghost>.ic{background:rgba(122,88,26,.10)}
+.btn:hover>.ic{transform:translate(3px,-1px) scale(1.06)}
+.btn:active{transform:scale(.985)}
+.btn-primary{background:linear-gradient(135deg,var(--gold),var(--gold-d));color:var(--ink);box-shadow:0 16px 34px -12px rgba(184,122,22,.75)}
 .btn-primary:hover{transform:translateY(-3px)}
 .btn-ghost{background:#fff;color:var(--dk);box-shadow:var(--sh-sm)}
 .btn-ghost:hover{transform:translateY(-3px)}
 
 /* NAV */
-header{position:fixed;inset:0 0 auto 0;z-index:60;padding:20px 0;transition:.3s}
-header.scrolled{background:rgba(251,245,233,.85);backdrop-filter:blur(16px) saturate(1.15);box-shadow:0 1px 0 rgba(122,88,26,.08);padding:12px 0}
+header{position:fixed;inset:0 0 auto 0;z-index:60;padding:max(20px,env(safe-area-inset-top)) 0 20px;transition:padding .3s,background .3s,box-shadow .3s}
+header.scrolled{background:rgba(251,245,233,.85);backdrop-filter:blur(16px) saturate(1.15);box-shadow:0 1px 0 rgba(122,88,26,.08);padding:max(12px,env(safe-area-inset-top)) 0 12px}
 .nav{display:flex;align-items:center;justify-content:space-between}
 .brand{display:flex;align-items:baseline;gap:4px;font-weight:800;font-size:24px;color:var(--ink);letter-spacing:-.02em}
 .brand .knock{color:var(--gold);font-weight:800;letter-spacing:-.12em;font-size:20px;transform:translateY(-1px)}
 .brand small{font-size:10.5px;font-weight:700;color:var(--gold-d);letter-spacing:.08em;margin-left:8px;text-transform:none}
 .navlinks{display:flex;gap:30px;align-items:center}
-.navlinks a{font-size:14.5px;font-weight:700;color:var(--dk);opacity:.75;transition:.2s}
+.navlinks a{font-size:14.5px;font-weight:700;color:var(--dk);opacity:.75;transition:color .2s,opacity .2s}
 .navlinks a:hover{opacity:1;color:var(--gold-d)}
 .navlinks .cta{background:var(--ink);color:#fff;padding:10px 20px;border-radius:999px;opacity:1}
 .navlinks .cta:hover{background:var(--gold-d);color:#fff}
@@ -65,7 +79,7 @@ header.scrolled{background:rgba(251,245,233,.85);backdrop-filter:blur(16px) satu
 @media(max-width:760px){.navlinks a:not(.cta):not(.lang){display:none}}
 
 /* HERO */
-.hero{min-height:100svh;display:flex;align-items:center;padding:130px 0 70px;position:relative;overflow:hidden;
+.hero{min-height:100svh;display:flex;align-items:center;padding:130px 0 104px;position:relative;overflow:hidden;
   background:
     radial-gradient(90% 70% at 78% 22%,rgba(247,222,159,.75) 0%,rgba(251,245,233,0) 60%),
     radial-gradient(60% 50% at 20% 85%,rgba(233,169,59,.18) 0%,rgba(251,245,233,0) 70%),
@@ -73,19 +87,31 @@ header.scrolled{background:rgba(251,245,233,.85);backdrop-filter:blur(16px) satu
 .hero::after{content:"";position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(rgba(231,166,46,.25) 1px,transparent 1.6px);background-size:26px 26px;mask-image:radial-gradient(70% 60% at 75% 30%,#000 0%,transparent 70%)}
 .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:36px;align-items:center;width:100%;position:relative;z-index:2}
 .hero h1{font-size:clamp(48px,7.6vw,104px);line-height:.98;margin:26px 0 0;color:var(--ink);text-wrap:balance}
-.hero h1 .hl{color:#D6941F}
-.hero h1 .hl.soft{color:var(--gold)}
+.hero h1 .hl{color:var(--gold-dd)}
+.hero h1 .hl.soft{color:var(--gold-t)}
 .hero .kolead{font-size:clamp(18px,2.2vw,24px);font-weight:800;color:var(--dk);margin-top:26px}
 .hero .lead{font-size:clamp(15.5px,1.7vw,18px);color:var(--muted);max-width:44ch;margin:12px 0 0;line-height:1.75}
 .hero-cta{display:flex;gap:13px;margin-top:34px;flex-wrap:wrap}
-.hero-meta{display:flex;gap:12px;margin-top:40px;flex-wrap:wrap}
+.hero-meta{display:flex;gap:12px;margin-top:32px;flex-wrap:wrap}
 .hero-meta span{font-size:12.5px;font-weight:700;color:var(--gold-d);border:1.5px solid var(--line);background:rgba(255,255,255,.7);border-radius:999px;padding:8px 15px}
-.stage{position:relative;display:flex;justify-content:center;align-items:flex-end;min-height:480px}
+.stage{position:relative;display:flex;justify-content:center;align-items:center;min-height:480px}
 .stage::before{content:"";position:absolute;bottom:6%;width:88%;aspect-ratio:2.6;border-radius:50%;background:radial-gradient(closest-side,rgba(247,222,159,.95),rgba(247,222,159,.35) 55%,transparent 75%);filter:blur(14px)}
 .stage img{width:auto;max-width:min(500px,46vw);max-height:64vh;position:relative;z-index:2;filter:drop-shadow(0 30px 44px rgba(150,100,20,.32));cursor:pointer}
 .stage img.hit{animation:knockhit .45s ease}
+.halo{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none}
+.halo i{position:absolute;aspect-ratio:1;border-radius:50%;border:1.5px solid rgba(150,96,14,.14)}
+.halo i:nth-child(1){width:min(150px,17vw);border-color:rgba(150,96,14,.30)}
+.halo i:nth-child(2){width:min(248px,27vw);border-color:rgba(150,96,14,.20)}
+.halo i:nth-child(3){width:min(346px,37vw);border-color:rgba(150,96,14,.12)}
+.knockcore{position:relative;z-index:3;width:min(94px,11vw);aspect-ratio:1;border-radius:50%;border:none;padding:0;cursor:pointer;
+  background:radial-gradient(circle at 36% 30%,#FFE9B4 0%,var(--gold) 46%,var(--gold-d) 100%);
+  box-shadow:0 16px 36px -10px rgba(122,88,26,.55),inset 0 -6px 14px rgba(122,88,26,.30);
+  transition:transform .25s}
+.knockcore:hover{transform:scale(1.06)}
+.knockcore:active{transform:scale(.94)}
+.knockcore.hit{animation:knockhit .45s ease}
 @keyframes knockhit{0%{transform:none}30%{transform:translateY(3px) scale(.97)}65%{transform:translateY(-4px) scale(1.015)}100%{transform:none}}
-.stage .ring{position:absolute;left:50%;top:44%;width:130px;height:130px;margin:-65px 0 0 -65px;border:2px solid rgba(231,166,46,.55);border-radius:50%;z-index:1;pointer-events:none;animation:knock 3.4s ease-out infinite}
+.stage .ring{position:absolute;left:50%;top:50%;width:130px;height:130px;margin:-65px 0 0 -65px;border:2px solid rgba(231,166,46,.55);border-radius:50%;z-index:1;pointer-events:none;animation:knock 3.4s ease-out infinite}
 .stage .ring.r2{animation-delay:1.7s}
 @keyframes knock{0%{transform:scale(.5);opacity:0}12%{opacity:.7}100%{transform:scale(3.1);opacity:0}}
 .knockhint{position:absolute;top:5%;right:2%;z-index:3;font-size:12.5px;font-weight:700;color:var(--gold-d);background:rgba(255,255,255,.78);border:1.5px solid var(--line);border-radius:999px;padding:8px 15px;box-shadow:var(--sh-sm)}
@@ -140,7 +166,7 @@ header.scrolled{background:rgba(251,245,233,.85);backdrop-filter:blur(16px) satu
 .sense p{color:var(--muted);font-size:14.5px;margin-top:10px}
 .bigline{margin-top:54px;text-align:center}
 .bigline b{font-size:clamp(22px,3.4vw,34px);font-weight:900;color:var(--ink)}
-.bigline b .hl{color:var(--gold)}
+.bigline b .hl{color:var(--gold-t)}
 .bigline p{color:var(--muted);margin-top:8px;font-size:15.5px}
 
 /* HOW */
@@ -206,7 +232,8 @@ header.scrolled{background:rgba(251,245,233,.85);backdrop-filter:blur(16px) satu
 .scene .stxt p{margin-top:12px;font-size:clamp(14px,1.8vw,17px);color:rgba(255,248,232,.92);max-width:52ch;font-weight:600;line-height:1.65;text-wrap:pretty}
 
 /* INCLUSION */
-.inc-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(36px,5vw,76px);align-items:center;margin-top:20px}
+/* 제품 렌더 제거로 1열. 이미지 복귀 시 .95fr 1.05fr 로 되돌릴 것 */
+.inc-grid{display:grid;grid-template-columns:1fr;gap:clamp(28px,4vw,44px);align-items:center;margin-top:20px;max-width:860px;margin-left:auto;margin-right:auto}
 .inc-grid h2.display{font-size:clamp(34px,4.8vw,62px)}
 .inc-points{display:grid;gap:16px;margin-top:26px}
 .inc-point{display:flex;gap:15px;align-items:flex-start;background:#fff;border-radius:20px;padding:20px 22px;border:1px solid var(--line);box-shadow:var(--sh-sm)}
@@ -231,6 +258,9 @@ header.scrolled{background:rgba(251,245,233,.85);backdrop-filter:blur(16px) satu
 .roadmap i{font-style:normal;color:rgba(247,222,159,.55);margin:0 12px}
 .company-card{margin-top:34px;position:relative;z-index:2;border-top:1px solid rgba(247,222,159,.28);padding-top:26px}
 .company-card h3{font-size:12.5px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--butter)}
+.company-card dd a{color:var(--gold-d);text-decoration:underline;text-underline-offset:3px;
+  transition:color .4s var(--ease)}
+.company-card dd a:hover{color:var(--ink)}
 .company-card dl{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:15px 34px;margin-top:18px}
 .company-card dt{font-size:11.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:rgba(247,222,159,.68)}
 .company-card dd{margin:4px 0 0;font-size:14.5px;font-weight:600;color:rgba(255,248,232,.9);line-height:1.6}
@@ -241,7 +271,7 @@ header.scrolled{background:rgba(251,245,233,.85);backdrop-filter:blur(16px) satu
 .contact .mail{display:inline-flex;align-items:center;gap:10px;margin-top:30px;background:#fff;border-radius:999px;padding:16px 30px;font-weight:800;font-size:17px;color:var(--gold-d);box-shadow:var(--sh-card)}
 .contact .mail:hover{transform:translateY(-2px)}
 .contact .sns{display:flex;gap:14px;justify-content:center;margin-top:24px;flex-wrap:wrap}
-.contact .sns a{font-size:13.5px;font-weight:700;color:var(--muted);border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:9px 18px;transition:.2s}
+.contact .sns a{font-size:13.5px;font-weight:700;color:var(--muted);border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:9px 18px;transition:color .2s,border-color .2s}
 .contact .sns a:hover{color:var(--gold-d);border-color:var(--gold)}
 .contact-mascot{width:150px;margin:0 auto 6px;filter:drop-shadow(0 18px 26px rgba(150,100,20,.28))}
 
@@ -261,6 +291,8 @@ footer{background:var(--cream2);border-top:1px solid var(--line);padding:38px 0;
   .stage .ring{display:none}
   .hero-grid>div:first-child>*,.stage{opacity:1;animation:none}
   .stage img.hit{animation:none}
+  .knockcore.hit{animation:none}
+  .knockcore:hover{transform:none}
 }
 
 /* APP */
@@ -271,7 +303,7 @@ footer{background:var(--cream2);border-top:1px solid var(--line);padding:38px 0;
 .appcard .e{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-d);font-weight:700;display:block;margin-bottom:8px}
 .appcard ul{list-style:none;display:grid;gap:8px;margin-top:12px}
 .appcard li{font-size:13.5px;color:var(--dk);font-weight:600;padding-left:15px;position:relative;line-height:1.5}
-.appcard li::before{content:"";position:absolute;left:2px;top:8px;width:6px;height:6px;border-radius:50%;background:var(--gold)}
+.appcard li::before{content:“”;position:absolute;left:2px;top:8px;width:6px;height:6px;border-radius:50%;background:var(--gold)}
 .app-note{margin-top:28px;text-align:center;font-size:14px;color:var(--muted)}
 .app-note b{color:var(--gold-d)}
 
@@ -307,7 +339,12 @@ footer{background:var(--cream2);border-top:1px solid var(--line);padding:38px 0;
 
 @media(max-width:900px){
   .hero-grid,.problem-grid,.inc-grid{grid-template-columns:1fr}
-  .stage{min-height:380px;order:-1}
+  /* 노크 비주얼이 화면 폭을 따라 커지게 — 380px 고정이면 원만 작고 여백만 남는다 */
+  .stage{min-height:300px;order:-1}
+  .halo i:nth-child(1){width:min(150px,26vw)}
+  .halo i:nth-child(2){width:min(248px,42vw)}
+  .halo i:nth-child(3){width:min(346px,58vw)}
+  .knockcore{width:min(94px,20vw)}
   .senses{grid-template-columns:1fr}
   .steps,.tech-grid{grid-template-columns:1fr 1fr}
   .lineup{grid-template-columns:1fr}
@@ -318,13 +355,20 @@ footer{background:var(--cream2);border-top:1px solid var(--line);padding:38px 0;
   .steps,.tech-grid{grid-template-columns:1fr}
   .appgrid{grid-template-columns:1fr}
 }
+
+/* --- 접근성 (Web Interface Guidelines) --- */
+:where(a,button,[tabindex]):focus-visible{outline:3px solid var(--dk,#7a4b12);outline-offset:3px;border-radius:8px}
+a,button{touch-action:manipulation;-webkit-tap-highlight-color:rgba(231,166,46,.22)}
+.skip{position:absolute;left:-9999px;top:0;z-index:200;background:var(--ink,#1b1b1b);color:#fff;font-weight:800;padding:12px 20px;border-radius:0 0 12px 0;text-decoration:none}
+.skip:focus{left:0}
 </style>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 
 <header id="hd">
   <div class="wrap nav">
-    <a class="brand" href="#top">pockn<span style="color:var(--gold)">o</span>q<span class="knock">)))</span><small>by KSHD</small></a>
+    <a class="brand" href="#top">pockn<span style="color:var(--gold)">o</span>q<span class="knock">)))</span></a>
     <nav class="navlinks">
       <a href="#why">Story</a>
       <a href="#how">How</a>
@@ -338,6 +382,8 @@ footer{background:var(--cream2);border-top:1px solid var(--line);padding:38px 0;
   </div>
 </header>
 
+<main id="main">
+
 <!-- HERO -->
 <section class="hero" id="top">
   <div class="wrap hero-grid">
@@ -347,7 +393,7 @@ footer{background:var(--cream2);border-top:1px solid var(--line);padding:38px 0;
       <p class="kolead">Your favorite's moment arrives as a knock.</p>
       <p class="lead">Pocknoq is a <b style="color:var(--dk)">fandom companion device</b> for fans. Your artist can reach you directly, and a server picks out only the moments that matter — both arrive as a knock. Press it, and it plays as sound, with vibration and light in time. You knock back, and your reply travels to the artist, who can answer in return. The companion app carries it further — character raising, fandom events, your own sensory mix.</p>
       <div class="hero-cta">
-        <a class="btn btn-primary" href="#lineup">See the lineup →</a>
+        <a class="btn btn-primary" href="#lineup">See the lineup<span class="ic" aria-hidden="true">→</span></a>
         <a class="btn btn-ghost" href="#why">Why we built it</a>
       </div>
       <div class="hero-meta">
@@ -358,9 +404,9 @@ footer{background:var(--cream2);border-top:1px solid var(--line);padding:38px 0;
       </div>
     </div>
     <div class="stage">
+      <div class="halo" aria-hidden="true"><i></i><i></i><i></i></div>
+      <button type="button" class="knockcore" aria-label="Try a knock — press to feel the vibration"></button>
       <i class="ring" aria-hidden="true"></i><i class="ring r2" aria-hidden="true"></i>
-      <img class="float" src="/img/hero-device.png" alt="Pocknoq — a yellow companion device with a heart antenna, a pixel face, and a softly glowing light band" width="733" height="985">
-      <span class="knockhint" aria-hidden="true">👆 Give it a knock</span>
     </div>
   </div>
   <div class="scrollcue">SCROLL<i></i></div>
@@ -409,9 +455,9 @@ footer{background:var(--cream2);border-top:1px solid var(--line);padding:38px 0;
         <p class="sub">And when a moment comes only through a screen and sound, some fans can't receive it at all. So we changed the question — <b style="color:var(--dk)">if we redesign how the moment arrives, could no one be left out?</b></p>
       </div>
       <div class="quotes rv">
-        <div class="quote"><p>"I can stare at my phone all day, and still nothing stays in my hands."</p><span>A bond that lives only on a screen</span></div>
-        <div class="quote"><p>"I always hear the news long after — it's all buried under alerts."</p><span>Lost in the flood of news</span></div>
-        <div class="quote"><p>"When a moment reaches you only one way, someone is always left outside it."</p><span>The fan left behind</span></div>
+        <div class="quote"><p>“I can stare at my phone all day, and still nothing stays in my hands.”</p><span>A bond that lives only on a screen</span></div>
+        <div class="quote"><p>“I always hear the news long after — it's all buried under alerts.”</p><span>Lost in the flood of news</span></div>
+        <div class="quote"><p>“When a moment reaches you only one way, someone is always left outside it.”</p><span>The fan left behind</span></div>
         <p class="problem-note">* Illustrative statements of the problem — not actual quotes.</p>
       </div>
     </div>
@@ -467,9 +513,6 @@ footer{background:var(--cream2);border-top:1px solid var(--line);padding:38px 0;
       <div class="step rv"><h3>Press to unfold it</h3><p>Press it, and the moment plays as sound, with light and vibration moving in time. You choose the senses in the app.</p></div>
       <div class="step rv"><h3>You knock back</h3><p>Knock Back — your reply gathers and travels to the artist, who can answer the fandom in return.</p></div>
     </div>
-    <figure class="story-fig rv">
-      <img src="/img/story-knockback.jpg" alt="Knock Back in three steps — tap it (TAP), the device knocks in reply (KNOCKS), and your favorite answers back (ANSWERS)">
-    </figure>
     <p class="story-cap rv" style="max-width:760px;margin-left:auto;margin-right:auto"><b>Tap → knock → answer.</b> Tap your favorite and that knock gathers to the artist, and on the moments they choose, an answer comes back. Every reply voice is <b>really recorded by the artist</b> — the AI only picks which moment to send; it never speaks for them. Not a one-way alert, but a connection you give and get.</p>
     <p class="how-note rv">Pocknoq is <b>not a conversational AI speaker.</b> It never talks at you or listens in — it delivers the moment, and lets you answer with a knock.<br>The senses (touch · light · sound), the artists you wait for, the kinds of moments that matter — <b>fans decide all of it in the app.</b></p>
 
@@ -499,43 +542,24 @@ footer{background:var(--cream2);border-top:1px solid var(--line);padding:38px 0;
     </div>
     <div class="lineup">
       <article class="pcard rv">
-        <div class="pimg-frame" style="background:#F7E7C4">
-          <span class="badge">01 · Mini</span>
-          <img src="/img/render-mini.jpg" alt="Pocknoq Mini — a keyring-style portable device held in the crowd at a concert, with a pixel character screen and a knock you feel" style="object-fit:cover;object-position:center">
-        </div>
         <div class="pbody">
           <h3>Mini <small>portable · always with you</small></h3>
           <p class="pdesc">The size of an earbuds case, right in your pocket. Wherever you are, your favorite knocks first — a tap in your pocket, a one-second glance, and back it goes.</p>
           <ul>
             <li><span class="dot">✓</span>A new message arrives as a gentle knock and a glow</li>
             <li><span class="dot">✓</span>The screen rests until you tap it awake — and you catch your favorite napping</li>
-            <li><span class="dot">✓</span>Runs on two AAA batteries — no cable, just swap them when they run out</li>
+            <li><span class="dot">✓</span>Rechargeable battery — uses a KC-certified battery pack</li>
             <li><span class="dot">✓</span>A keyring charm for your bag or pouch</li>
           </ul>
-          <div class="emorow">
-            <figure><img src="/img/emo-1.png" alt="Excited pixel face"><figcaption>Excited</figcaption></figure>
-            <figure><img src="/img/emo-2.png" alt="Heart-pounding pixel face"><figcaption>Thrilled</figcaption></figure>
-            <figure><img src="/img/emo-3.png" alt="Grateful pixel face"><figcaption>Grateful</figcaption></figure>
-            <figure><img src="/img/emo-4.png" alt="Missing-you pixel face"><figcaption>Miss you</figcaption></figure>
-            <figure><img src="/img/emo-5.png" alt="Tired pixel face"><figcaption>Tired</figcaption></figure>
-          </div>
-          <p class="pstrip-cap">A one-second glance — today's mood in a pixel face</p>
-          <div class="pstrip"><img src="/img/mini-colors.png" alt="Mini color options — lavender, peach, mint, black"></div>
-          <p class="pstrip-cap">Color options — Lavender · Peach · Mint · Black</p>
           <div class="pspacer"></div>
           <div class="pspec">
-            <div><b>Size</b><span>≈ 4.5 × 5 cm — earbuds-case sized</span></div>
-            <div><b>Power</b><span>Two AAA batteries · no charging, simply replaced</span></div>
+            <div><b>Power</b><span>Rechargeable · KC-certified battery pack</span></div>
             <div><b>Display</b><span>Pixel emotion display · rests when idle</span></div>
             <div><b>Alerts</b><span>Knock haptics + light</span></div>
           </div>
         </div>
       </article>
       <article class="pcard rv">
-        <div class="pimg-frame">
-          <span class="badge">02 · Main</span>
-          <img src="/img/render-main.jpg" alt="Pocknoq Main — a stationary companion on a desk, with pixel expressions, a mood light band, and a knock-back button on the side" style="object-fit:cover;object-position:center 42%">
-        </div>
         <div class="pbody">
           <h3>Main <small>stationary · for your home</small></h3>
           <p class="pdesc">A little bigger than your fist — the friend who greets you when you come home. Moments unfold in full, with expressions, light, and sound.</p>
@@ -544,21 +568,16 @@ footer{background:var(--cream2);border-top:1px solid var(--line);padding:38px 0;
             <li><span class="dot">✓</span>Tap it, and it answers — the two-way Knock Back</li>
             <li><span class="dot">✓</span>Concert light-show mode — for the nights you couldn't be in the crowd</li>
           </ul>
-          <div class="pstrip"><img src="/img/desk-faces.png" alt="Desk's range of expressions and motions"></div>
-          <p class="pstrip-cap">Expressions &amp; motions — Excited · Thrilled · Grateful · Miss you · Good night</p>
-          <div class="pstrip"><img src="/img/lightshow.png" alt="Concert light-show mode — four scenes glowing in sync with stage lighting colors"></div>
-          <p class="pstrip-cap">Concert light-show mode — the show's light, even on nights away from the crowd</p>
           <div class="pspacer"></div>
           <div class="pspec">
-            <div><b>Size</b><span>≈ 10 × 11 cm — a bit bigger than a fist</span></div>
             <div><b>Power</b><span>Rechargeable battery · can stay plugged in</span></div>
-            <div><b>Connectivity</b><span>Wi-Fi · Bluetooth</span></div>
+            <div><b>Connectivity</b><span>Bluetooth (BLE)</span></div>
             <div><b>Port</b><span>USB-C</span></div>
           </div>
         </div>
       </article>
     </div>
-    <p class="lineup-note rv">* Prototype-stage design and specifications — details may change at launch.</p>
+    <p class="lineup-note rv">* Prototype-stage specifications — details may change at launch. <b>The enclosure design is not public yet</b> — Pocknoq shells are 3D printed per IP, with no shared mold.</p>
   </div>
 </section>
 
@@ -624,12 +643,8 @@ footer{background:var(--cream2);border-top:1px solid var(--line);padding:38px 0;
       <span class="kicker"><span class="chip">F</span> One platform, every IP</span>
       <h2 class="display en">A device for<br><span class="hl">every world</span></h2>
       <p class="kosub">Pocknoq isn't a generic gadget — it's born dedicated to each IP.</p>
-      <p class="sub rv" style="margin-left:auto;margin-right:auto">The server, app, and core hardware stay a shared platform — while the form, colors, voice, knock patterns, and app themes are made for each artist and character. Partners get a device carrying their own world, without building one from scratch.</p>
+      <p class="sub rv" style="margin-left:auto;margin-right:auto">The server, app, and core hardware stay a shared platform — while the enclosure is <b>3D printed per IP</b>. Not one shared mold in different colors: the shell itself is made for each artist and character, along with the voice, knock patterns, and app themes. Partners get a device carrying their own world, without building one from scratch.</p>
     </div>
-    <figure class="ed-figure rv">
-      <img src="/img/editions.jpg" alt="One Pocknoq device shown as many colorway and costume editions tailored to different IP">
-      <figcaption class="ed-cap">Many editions born from one platform — colorways, costumes, characters. On an IP deal, a dedicated edition is made for that world. (Concept render.)</figcaption>
-    </figure>
     <div class="ed-points">
       <div class="ed-point rv"><span class="e">Shared</span><h4>Shared platform</h4><p>Server, app, core hardware, and patented tech stay the same — one validated engine underneath.</p></div>
       <div class="ed-point rv"><span class="e">Tailored</span><h4>IP-tailored layer</h4><p>Form, colors, voice, knock patterns, and app themes are re-skinned for each artist and character.</p></div>
@@ -684,7 +699,7 @@ footer{background:var(--cream2);border-top:1px solid var(--line);padding:38px 0;
         <p>It brings the moment of a concert into every day — in your pocket and on your desk. The show ends; the connection doesn't.</p>
       </div>
     </div>
-    <p class="trust rv">Precision linear haptics · <b>Validated by structural simulation</b> · <b>2 patent applications filed</b> for core technology · Fan community pilot planned for H2 2026</p>
+    <p class="trust rv">Precision linear haptics · <b>Validated by structural simulation</b> · <b>2 patent applications filed</b> for core technology</p>
   </div>
 </section>
 
@@ -692,9 +707,6 @@ footer{background:var(--cream2);border-top:1px solid var(--line);padding:38px 0;
 <section class="sec" id="inclusion">
   <div class="wrap">
     <div class="inc-grid">
-      <div class="inc-art rv">
-        <img src="/img/kino-smile.png" alt="A beaming Pocknoq character">
-      </div>
       <div>
         <div class="rv">
           <span class="kicker"><span class="chip">H</span> Inclusive by design</span>
@@ -716,16 +728,16 @@ footer{background:var(--cream2);border-top:1px solid var(--line);padding:38px 0;
           </div>
         </div>
         <div class="inc-callout rv">
-          <p>"The barrier was never the fan — it was a moment built for a single sense. Change how the moment arrives, and no one gets left out."</p>
+          <p>“The barrier was never the fan — it was a moment built for a single sense. Change how the moment arrives, and no one gets left out.”</p>
         </div>
       </div>
     </div>
     <figure class="story-fig rv">
-      <img src="/img/story-everyfan.jpg" alt="Seven fans receiving the same moment each in their own way — touch+light, touch+sound, all three, light+sound, touch, light, sound">
+      <img loading="lazy" width="1378" height="534" src="/img/story-everyfan.jpg" alt="Seven fans receiving the same moment each in their own way — touch+light, touch+sound, all three, light+sound, touch, light, sound">
     </figure>
     <p class="story-cap rv" style="max-width:760px;margin-left:auto;margin-right:auto">Whichever sense it reaches you by — touch, light, or sound — <b>it's the same moment.</b> When one sense is hard to reach, the moment still arrives, whole, in its own way — no fan gets a smaller version.</p>
     <div class="scene rv">
-      <img src="/img/scene-concert.jpg" alt="Fans sharing one moment in a golden concert crowd — a fan with a hearing aid, a fan in sunglasses, a fan holding a lightstick">
+      <img loading="lazy" width="1600" height="571" src="/img/scene-concert.jpg" alt="Fans sharing one moment in a golden concert crowd — a fan with a hearing aid, a fan in sunglasses, a fan holding a lightstick">
       <div class="veil"></div>
       <div class="stxt">
         <div class="en-h en">Same moment. Same belonging.</div>
@@ -760,13 +772,13 @@ footer{background:var(--cream2);border-top:1px solid var(--line);padding:38px 0;
         <div class="ic">💥</div>
         <span class="e">Live Knock</span>
         <h3>The fandom, in one moment</h3>
-        <p>During a live, a signal makes every device in the fandom glow and knock at once. Knock back instead of a "like," and the count of fans here right now gathers on screen.</p>
+        <p>During a live, a signal makes every device in the fandom glow and knock at once. Knock back instead of a “like,” and the count of fans here right now gathers on screen.</p>
       </div>
       <div class="sense rv">
         <div class="ic">💌</div>
         <span class="e">Fan Events</span>
         <h3>Fan meetings &amp; signings, kept</h3>
-        <p>Bring your Main on a special day: connect through the two-way Knock Back, and keep that day's knock to replay at home. Confirmation that "my heart got through" — through vibration, no screen needed.</p>
+        <p>Bring your Main on a special day: connect through the two-way Knock Back, and keep that day's knock to replay at home. Confirmation that “my heart got through” — through vibration, no screen needed.</p>
       </div>
       <div class="sense rv">
         <div class="ic">🗓️</div>
@@ -790,24 +802,25 @@ footer{background:var(--cream2);border-top:1px solid var(--line);padding:38px 0;
   <div class="wrap">
     <div class="center rv">
       <span class="kicker"><span class="chip">J</span> Team</span>
-      <h2 class="display en">Team <span class="hl">KSHD</span></h2>
+      <h2 class="display en">Team <span class="hl">CIELIEN</span></h2>
     </div>
     <div class="team-band rv">
-      <div class="en-h en">Five makers building<br>the <span class="hl">feelable</span> fandom</div>
-      <p>KSHD is a founding team of five, based in Seoul, South Korea. Hardware design, firmware, app and server engineering, AI, product management, brand, and business development are all handled in-house. Our design has been validated through structural analysis and simulation, physical prototypes are in progress, and we have filed 2 patent applications for the core technology. Fan community pilots begin in the second half of 2026.</p>
+      <div class="en-h en">Four makers building<br>the <span class="hl">feelable</span> fandom</div>
+      <p>CIELIEN is a founding team of four, based in Seoul, South Korea. Hardware design, firmware, app and server engineering, product management, brand, and business development are all handled in-house. Our design has been validated through structural analysis and simulation, physical prototypes are in progress, and we have filed 2 patent applications for the core technology.</p>
       <div class="team-tags">
-        <span>Hardware</span><span>Firmware</span><span>Software · Server</span><span>AI</span><span>Product · PM</span><span>Brand · BD</span>
+        <span>Hardware</span><span>Firmware</span><span>Software · Server</span><span>Product · PM</span><span>Brand · BD</span>
       </div>
-      <p class="roadmap"><b>Now</b>Prototype validation<i>→</i><b>H2 2026</b>Fan community pilot<i>→</i><b>Next</b>Launch preparation</p>
+      <p class="roadmap"><b>Now</b>Prototype validation<i>→</i><b>Next</b>Fan community pilot<i>→</i><b>Then</b>Launch preparation</p>
       <div class="company-card">
         <h3>Company information</h3>
         <dl>
-          <div><dt>Company</dt><dd>KSHD</dd></div>
+          <div><dt>Company</dt><dd>CIELIEN</dd></div>
           <div><dt>Product</dt><dd>Pocknoq — a two-way fandom companion device</dd></div>
-          <div><dt>Official website</dt><dd>pocknoq.com is the official website of KSHD, named after our product.</dd></div>
+          <div><dt>App</dt><dd><a href="/fanforu/">FAN FOR U — fan activity app</a></dd></div>
+          <div><dt>Official website</dt><dd>pocknoq.com is the official website of CIELIEN, named after our product.</dd></div>
           <div><dt>Founder and CEO</dt><dd>Daesung Chu</dd></div>
           <div><dt>Location</dt><dd>Seoul, South Korea</dd></div>
-          <div><dt>Team size</dt><dd>5</dd></div>
+          <div><dt>Team size</dt><dd>4</dd></div>
           <div><dt>Stage</dt><dd>Pre-launch — prototype validation, 2 patent applications filed</dd></div>
           <div><dt>Contact</dt><dd><a href="mailto:kshd@pocknoq.com">kshd@pocknoq.com</a></dd></div>
         </dl>
@@ -819,7 +832,7 @@ footer{background:var(--cream2);border-top:1px solid var(--line);padding:38px 0;
 <!-- CONTACT -->
 <section class="sec contact" id="contact">
   <div class="wrap">
-    <img class="logo-lockup rv" src="/img/logo-lockup.png" alt="KSHD Pocknoq — Feel Connected" style="margin:0 auto 14px">
+    <img class="logo-lockup rv" loading="lazy" width="1304" height="332" src="/img/logo-lockup.png" alt="Pocknoq — Feel Connected" style="margin:0 auto 14px">
     <div class="rv">
       <span class="kicker"><span class="chip">K</span> Contact</span>
       <h2 class="display en">Knock <span class="hl">first</span></h2>
@@ -835,11 +848,13 @@ footer{background:var(--cream2);border-top:1px solid var(--line);padding:38px 0;
   </div>
 </section>
 
+</main>
+
 <footer>
   <div class="wrap foot">
-    <img class="flogo" src="/img/logo-lockup.png" alt="KSHD Pocknoq — Feel Connected">
-    <p>KSHD · Seoul, South Korea · <a href="mailto:kshd@pocknoq.com" style="color:inherit">kshd@pocknoq.com</a></p>
-    <p>© 2026 KSHD. All rights reserved. · Connection you can feel.</p>
+    <img class="flogo" loading="lazy" width="1304" height="332" src="/img/logo-lockup.png" alt="Pocknoq — Feel Connected">
+    <p>CIELIEN · Seoul, South Korea · <a href="mailto:kshd@pocknoq.com" style="color:inherit">kshd@pocknoq.com</a> · <a href="/fanforu/" style="color:inherit">FAN FOR U</a></p>
+    <p>© 2026 CIELIEN. All rights reserved. · Connection you can feel.</p>
   </div>
 </footer>
 
@@ -847,7 +862,7 @@ footer{background:var(--cream2);border-top:1px solid var(--line);padding:38px 0;
 const hd=document.getElementById('hd');
 addEventListener('scroll',()=>{hd.classList.toggle('scrolled',scrollY>10)},{passive:true});
 const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}})},{threshold:.12});
-const dv=document.querySelector('.stage img');
+const dv=document.querySelector('.knockcore');
 if(dv){
   dv.addEventListener('pointerdown',()=>{dv.classList.remove('hit');void dv.offsetWidth;dv.classList.add('hit');if(navigator.vibrate)navigator.vibrate(35)},{passive:true});
   dv.addEventListener('animationend',e=>{if(e.animationName==='knockhit')dv.classList.remove('hit')});
