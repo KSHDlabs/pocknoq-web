@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0C12AB">
+<meta name="robots" content="noindex, nofollow">
+<title>출시 알림 신청 · FAN FOR U</title>
+<meta name="description" content="FAN FOR U가 출시되면 문자로 먼저 알려드려요.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231B5FE8'/%3E%3Cpath d='M16 25.5C16 25.5 7.5 20.4 7.5 14.6a4.6 4.6 0 0 1 8.5-2.5 4.6 4.6 0 0 1 8.5 2.5C24.5 20.4 16 25.5 16 25.5Z' fill='%23fff'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+/* FAN FOR U 출시 알림 신청. 팬 모임 현장에서 QR로 여는 페이지라 폰 한 손 기준으로 짠다.
+   색은 /fanforu/ 소개 페이지(Vite)와 맞춘다: 진파랑 #0C12AB / 포인트 #1455FF.
+   고령층 기준: 본문 18px 이상, 입력칸·버튼 높이 60px 이상. */
+:root{
+  --navy:#0C12AB; --navy-2:#070B7A; --blue:#1455FF; --blue-l:#EDF3FF;
+  --ink:#111215; --body:#3A3F48; --muted:#676B73; --line:#E4E7EE; --edge:#8B90A0;
+  --bg:#F5F7FB; --ok:#16A34A; --ok-l:#E6F6EC; --err:#B3261E;
+  --ease:cubic-bezier(.32,.72,0,1);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;color-scheme:light}
+body{margin:0;background:var(--bg);color:var(--body);
+  font-family:'Pretendard Variable',Pretendard,-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+  font-size:18px;line-height:1.7;word-break:keep-all;overflow-wrap:break-word;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{max-width:100%;height:auto;display:block}
+a{color:var(--blue)}
+:where(a,button,summary,[tabindex]):focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:8px}
+a,button,label{touch-action:manipulation;-webkit-tap-highlight-color:rgba(20,85,255,.15)}
+.skip{position:absolute;left:-9999px;top:0;z-index:100;background:#fff;color:var(--navy);font-weight:800;padding:12px 20px;border-radius:0 0 12px 0}
+.skip:focus{left:0}
+.wrap{max-width:560px;margin:0 auto;padding:0 max(20px,env(safe-area-inset-left)) 0 max(20px,env(safe-area-inset-right))}
+[hidden]{display:none !important}
+
+/* ── 히어로 ── */
+.hero{position:relative;overflow:hidden;color:#fff;
+  background:radial-gradient(120% 70% at 50% 0%,#2A31D6 0%,var(--navy) 55%,var(--navy-2) 100%);
+  padding:calc(16px + env(safe-area-inset-top)) 0 0}
+.hero::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:radial-gradient(rgba(255,255,255,.14) 1px,transparent 1.6px);background-size:24px 24px;
+  mask-image:radial-gradient(70% 55% at 50% 30%,#000,transparent 75%)}
+.bar{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;min-height:44px}
+.logo{font-size:20px;font-weight:900;letter-spacing:-.01em;color:#fff;text-decoration:none;display:inline-flex;align-items:center;min-height:44px}
+.pill{display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:700;color:#fff;
+  background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);border-radius:999px;padding:6px 14px}
+.pill i{width:8px;height:8px;border-radius:50%;background:#7CF0A6;box-shadow:0 0 0 4px rgba(124,240,166,.25)}
+.hero-copy{position:relative;z-index:2;padding:34px 0 0;text-align:center}
+.hero h1{margin:0;font-size:clamp(34px,9.6vw,54px);line-height:1.2;font-weight:900;letter-spacing:-.035em;color:#fff}
+.hero h1 em{font-style:normal;color:#BFD0FF}
+.hero .lead{margin:16px auto 0;font-size:19px;line-height:1.65;color:#DDE4FF;max-width:22em}
+.go{display:inline-flex;align-items:center;gap:10px;margin-top:24px;min-height:56px;padding:0 26px;border-radius:999px;
+  background:#fff;color:var(--navy);font-size:19px;font-weight:800;text-decoration:none;
+  box-shadow:0 12px 30px rgba(0,0,30,.28);transition:transform .5s var(--ease)}
+.go:hover{transform:translateY(-2px)}
+.go svg{width:20px;height:20px}
+/* 노크 파동: Pocknoq·팬포유 공통 시그니처 */
+.halo{position:absolute;left:50%;bottom:-40px;transform:translateX(-50%);width:0;height:0;z-index:1;pointer-events:none}
+.halo i{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);border-radius:50%;border:1.5px solid rgba(255,255,255,.14)}
+.halo i:nth-child(1){width:360px;height:360px;border-color:rgba(255,255,255,.2)}
+.halo i:nth-child(2){width:560px;height:560px}
+.halo i:nth-child(3){width:780px;height:780px;border-color:rgba(255,255,255,.08)}
+.phone{position:relative;z-index:2;width:min(270px,68vw);margin:34px auto 0;height:min(330px,82vw);overflow:hidden}
+.phone img{width:100%;filter:drop-shadow(0 30px 50px rgba(0,0,40,.45))}
+
+/* ── 한곳에서 되는 것 ── */
+.feats{background:#fff;border-bottom:1px solid var(--line);padding:26px 0 28px}
+.feats h2{margin:0 0 16px;text-align:center;font-size:18px;font-weight:800;color:var(--muted);letter-spacing:-.01em}
+.feats ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.feats li{text-align:center;font-size:17px;font-weight:800;color:var(--ink)}
+.feats img{width:64px;height:64px;margin:0 auto 6px}
+
+/* ── 신청 폼 ── */
+.apply{padding:32px 0 20px}
+.apply-head{margin:0 0 18px}
+.apply-head h2{margin:0;font-size:28px;line-height:1.3;font-weight:900;color:var(--ink);letter-spacing:-.03em}
+.apply-head p{margin:6px 0 0;font-size:17px;color:var(--muted)}
+.card{background:#fff;border:1px solid var(--line);border-radius:26px;padding:26px 22px;
+  box-shadow:0 2px 4px rgba(12,18,171,.04),0 18px 44px rgba(12,18,171,.09)}
+.step{margin:0 0 30px;border:0;padding:0;min-width:0}
+.step-t{display:flex;align-items:center;gap:12px;margin:0 0 6px;padding:0;font-size:21px;font-weight:800;color:var(--ink);letter-spacing:-.02em}
+.num{flex:0 0 32px;width:32px;height:32px;border-radius:10px;background:var(--navy);color:#fff;font-size:17px;font-weight:800;display:grid;place-items:center}
+.hint{margin:0 0 12px 44px;font-size:16px;color:var(--muted);line-height:1.55}
+.inp-wrap{position:relative}
+.inp{width:100%;min-height:62px;font:inherit;font-size:21px;font-weight:700;color:var(--ink);
+  border:2px solid var(--edge);border-radius:16px;padding:12px 18px;background:#fff;
+  transition:border-color .3s var(--ease),box-shadow .3s var(--ease)}
+.inp.has-ic{padding-left:54px}
+.inp-ic{position:absolute;left:18px;top:50%;transform:translateY(-50%);width:24px;height:24px;color:var(--blue);pointer-events:none}
+.inp::placeholder{color:#8B90A0;font-weight:500}
+.inp:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 4px rgba(20,85,255,.18)}
+.inp[aria-invalid="true"]{border-color:var(--err)}
+.err{display:none;color:var(--err);font-size:16px;font-weight:700;margin:8px 0 0}
+.err.on{display:block}
+
+.choices{display:grid;gap:10px}
+.choice{position:relative;display:flex;align-items:center;gap:14px;min-height:72px;
+  border:2px solid var(--edge);border-radius:16px;padding:14px 14px 12px;cursor:pointer;background:#fff;
+  font-size:18px;font-weight:800;color:var(--ink);line-height:1.35;
+  transition:border-color .3s var(--ease),background .3s var(--ease),box-shadow .3s var(--ease)}
+.choice input{position:absolute;opacity:0;width:1px;height:1px}
+.choice .mk{flex:0 0 26px;width:26px;height:26px;border-radius:50%;border:2px solid var(--edge);display:grid;place-items:center;background:#fff}
+.choice .mk svg{width:16px;height:16px;opacity:0}
+.choice input:checked + .mk{border-color:var(--blue);background:var(--blue)}
+.choice input:checked + .mk svg{opacity:1}
+.choice:has(input:checked){border-color:var(--blue);background:var(--blue-l);box-shadow:0 6px 16px rgba(20,85,255,.14)}
+.choice:has(input:focus-visible){outline:3px solid var(--blue);outline-offset:3px}
+.choice small{display:block;font-size:15px;font-weight:600;color:var(--muted)}
+
+.agree{border-top:1px dashed var(--line);padding-top:22px;margin-top:4px}
+.chk{display:flex;align-items:flex-start;gap:12px;min-height:48px;cursor:pointer;font-size:18px;font-weight:700;color:var(--ink);line-height:1.45;padding:8px 0}
+.chk input{flex:0 0 28px;width:28px;height:28px;margin:0;accent-color:var(--blue);cursor:pointer}
+.chk .req{color:var(--blue);font-weight:800}
+.chk-all{background:var(--bg);border-radius:16px;padding:14px 16px;margin:0 0 6px;font-size:19px;font-weight:800}
+details{margin:0 0 6px 40px}
+summary{cursor:pointer;font-size:16px;font-weight:700;color:var(--blue);min-height:44px;display:inline-flex;align-items:center;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"";width:8px;height:8px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg);margin:-4px 0 0 10px;transition:transform .3s var(--ease)}
+details[open] summary::after{transform:rotate(-135deg);margin-top:4px}
+.terms{width:100%;border-collapse:collapse;font-size:15.5px;line-height:1.55;margin:2px 0 8px}
+.terms th,.terms td{border:1px solid var(--line);padding:9px 10px;text-align:left;vertical-align:top}
+.terms th{background:var(--bg);color:var(--ink);width:5.6em;font-weight:700}
+.terms-note{font-size:15.5px;color:var(--muted);margin:0 0 6px;line-height:1.6}
+
+.submit{display:flex;width:100%;align-items:center;justify-content:center;gap:10px;min-height:66px;margin-top:20px;
+  border:0;border-radius:18px;background:var(--navy);color:#fff;font:inherit;font-size:21px;font-weight:800;cursor:pointer;
+  box-shadow:0 14px 30px rgba(12,18,171,.3);transition:transform .5s var(--ease),background .3s var(--ease)}
+.submit:hover{background:var(--navy-2);transform:translateY(-2px)}
+.submit:active{transform:scale(.985)}
+.submit[aria-disabled="true"]{background:#5B6070;box-shadow:none}
+.submit svg{width:22px;height:22px}
+.form-err{text-align:center}
+
+/* 완료 */
+.done{text-align:center;padding:10px 0 4px}
+.done .check{width:88px;height:88px;margin:4px auto 18px;border-radius:50%;background:var(--ok-l);display:grid;place-items:center;
+  box-shadow:0 0 0 10px rgba(22,163,74,.07)}
+.done .check svg{width:46px;height:46px}
+.done h2{margin:0 0 8px;font-size:30px;font-weight:900;color:var(--ink);letter-spacing:-.03em}
+.done p{margin:0;font-size:19px}
+.done .big{margin:10px 0 0;font-size:28px;font-weight:900;color:var(--ink);letter-spacing:.02em}
+.done .box{background:var(--bg);border-radius:16px;padding:16px 18px;text-align:left;margin:20px 0 0}
+.done .box p{font-size:17px}
+
+.note{margin:18px 0 0;font-size:16px;color:#28366B;background:var(--blue-l);border-radius:16px;padding:16px 18px;line-height:1.65}
+
+footer{margin-top:28px;padding:22px 0 calc(90px + env(safe-area-inset-bottom));border-top:1px solid var(--line);font-size:15px;color:var(--muted)}
+footer nav{display:flex;flex-wrap:wrap;gap:0 20px}
+footer nav a{display:inline-flex;align-items:center;min-height:44px;font-weight:700;text-decoration:none}
+footer p{margin:6px 0 0}
+
+.draft{position:fixed;left:50%;bottom:calc(14px + env(safe-area-inset-bottom));transform:translateX(-50%);z-index:50;
+  width:max-content;max-width:calc(100% - 32px);background:#241F0A;color:#FFE9A8;font-size:14px;font-weight:700;
+  border-radius:999px;padding:9px 16px;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+
+@media (min-width:900px){
+  .hero .wrap{max-width:1040px;display:grid;grid-template-columns:1.1fr .9fr;align-items:end;gap:40px}
+  .bar{grid-column:1 / -1}
+  .hero-copy{text-align:left;padding:40px 0 80px}
+  .hero .lead{margin-left:0}
+  .phone{margin:0;width:300px;height:380px;justify-self:center}
+  .halo{left:72%}
+}
+@media (max-width:380px){
+  .feats img{width:54px;height:54px}
+  .feats li{font-size:16px}
+  details{margin-left:0}
+}
+@media (prefers-reduced-motion:reduce){*{transition-duration:.01ms !important}}
+</style>
+</head>
+<body>
+<a class="skip" href="#apply">신청하기로 바로가기</a>
+
+<header class="hero">
+  <div class="halo" aria-hidden="true"><i></i><i></i><i></i></div>
+  <div class="wrap">
+    <div class="bar">
+      <a class="logo" href="/fanforu/">FAN FOR U</a>
+      <span class="pill"><i aria-hidden="true"></i>출시 알림 신청 중</span>
+    </div>
+    <div class="hero-copy">
+      <h1>트로트 팬 활동,<br><em>이제 한곳에서</em></h1>
+      <p class="lead">좋아하는 가수만 알려주세요.<br>FAN FOR U가 나오면<br>문자로 먼저 알려드릴게요.</p>
+      <a class="go" href="#apply">출시 알림 받기
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
+      </a>
+    </div>
+    <div class="phone">
+      <img src="/fanforu/mockups/home-phone.webp" width="436" height="895" alt="FAN FOR U 앱 홈 화면. 소식, 스트리밍, 투표, 모임 카드와 요일별 응원 기록이 보인다.">
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="feats" aria-labelledby="featsT">
+  <div class="wrap">
+    <h2 id="featsT">흩어져 있던 팬 활동을 앱 하나로</h2>
+    <ul>
+      <li><img src="/fanforu/icons/mark-news-transparent.webp" width="64" height="64" alt="" loading="lazy">소식</li>
+      <li><img src="/fanforu/icons/mark-streaming-transparent.webp" width="64" height="64" alt="" loading="lazy">스트리밍</li>
+      <li><img src="/fanforu/icons/mark-vote-transparent.webp" width="64" height="64" alt="" loading="lazy">투표</li>
+      <li><img src="/fanforu/icons/mark-verification-transparent.webp" width="64" height="64" alt="" loading="lazy">인증</li>
+    </ul>
+  </div>
+</section>
+
+<section class="apply" id="apply" aria-labelledby="applyT">
+<div class="wrap">
+  <div class="apply-head">
+    <h2 id="applyT">출시 알림 신청</h2>
+    <p>1분이면 끝나요.</p>
+  </div>
+
+  <div class="card">
+  <form id="f" novalidate>
+    <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden"><label>웹사이트<input type="text" name="website" id="website" tabindex="-1" autocomplete="off"></label></div>
+    <div class="step">
+      <label class="step-t" for="artist"><span class="num" aria-hidden="true">1</span>좋아하는 가수</label>
+      <p class="hint" id="artistHint">여러 명이면 쉼표로 나눠 적어주세요.</p>
+      <div class="inp-wrap">
+        <svg class="inp-ic" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.3-9.6C1.5 8 3.6 4.5 7.2 4.5c2 0 3.6 1.1 4.8 2.8 1.2-1.7 2.8-2.8 4.8-2.8 3.6 0 5.7 3.5 4.5 6.9C19.5 16.4 12 21 12 21z"/></svg>
+        <input class="inp has-ic" id="artist" name="artist" type="text" autocomplete="off" maxlength="60"
+               placeholder="가수 이름" aria-describedby="artistHint artistErr" required>
+      </div>
+      <p class="err" id="artistErr" role="alert">좋아하는 가수를 적어주세요.</p>
+    </div>
+
+    <fieldset class="step">
+      <legend class="step-t"><span class="num" aria-hidden="true">2</span>팬 활동은 어떠세요?</legend>
+      <div class="choices">
+        <label class="choice"><input type="radio" name="stage" value="existing" checked><span class="mk" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span>이미 하고 있어요<small>투표·스밍 해봤어요</small></span></label>
+        <label class="choice"><input type="radio" name="stage" value="new"><span class="mk" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span>이제 막 시작해요<small>방법부터 알고 싶어요</small></span></label>
+      </div>
+    </fieldset>
+
+    <div class="step">
+      <label class="step-t" for="phone"><span class="num" aria-hidden="true">3</span>휴대폰 번호</label>
+      <p class="hint" id="phoneHint">출시 소식을 받을 번호예요. 가족분이 대신 신청하셔도 돼요.</p>
+      <input class="inp" id="phone" name="phone" type="tel" inputmode="numeric" autocomplete="tel-national"
+             placeholder="010-0000-0000" maxlength="13" aria-describedby="phoneHint phoneErr" required>
+      <p class="err" id="phoneErr" role="alert">휴대폰 번호 11자리를 확인해 주세요.</p>
+    </div>
+
+    <div class="agree">
+      <label class="chk chk-all"><input type="checkbox" id="all">모두 동의해요</label>
+
+      <label class="chk"><input type="checkbox" class="req-chk" id="c1" name="consent_privacy"><span><span class="req">[필수]</span> 개인정보 수집·이용 동의 <span style="white-space:nowrap">(만 14세 이상)</span></span></label>
+      <details>
+        <summary>자세히 보기</summary>
+        <table class="terms">
+          <tr><th scope="row">수집 항목</th><td>휴대폰 번호, 좋아하는 가수, 팬 활동 경험</td></tr>
+          <tr><th scope="row">이용 목적</th><td>FAN FOR U 출시 알림 문자 발송, 가수별 서비스 준비</td></tr>
+          <tr><th scope="row">보유 기간</th><td>출시 알림을 보낸 뒤 바로 파기합니다. 출시 전이라도 신청일로부터 6개월이 지나면 파기합니다.</td></tr>
+          <tr><th scope="row">보관</th><td>Google 스프레드시트(Google LLC, 국외 서버)에 보관합니다. <a href="/fanforu/privacy.html">개인정보처리방침</a> 8항 참고</td></tr>
+        </table>
+        <p class="terms-note">동의하지 않으셔도 됩니다. 다만 동의하지 않으시면 출시 알림을 보내드릴 수 없어요. 만 14세 미만은 신청할 수 없습니다.</p>
+      </details>
+
+      <label class="chk"><input type="checkbox" class="req-chk" id="c2" name="consent_sms"><span><span class="req">[필수]</span> 출시 알림 문자 수신 동의</span></label>
+      <details>
+        <summary>자세히 보기</summary>
+        <p class="terms-note">FAN FOR U 출시 소식을 문자로 한 번 보내드립니다. 오후 9시부터 다음 날 오전 8시 사이에는 보내지 않습니다. 원하지 않으시면 문자에 적힌 방법이나 <a href="mailto:kshd@pocknoq.com">kshd@pocknoq.com</a>으로 언제든 수신을 거부할 수 있어요.</p>
+      </details>
+
+      <p class="err form-err" id="consentErr" role="alert">필수 동의 두 가지를 체크해 주세요.</p>
+    </div>
+
+    <button class="submit" type="submit" id="submitBtn">출시 알림 받기</button>
+    <p class="err form-err" id="sendErr" role="alert">신청을 보내지 못했어요. 잠시 뒤 다시 눌러 주세요.</p>
+  </form>
+
+  <div class="done" id="done" hidden tabindex="-1">
+    <div class="check" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+    </div>
+    <h2>신청이 완료되었어요</h2>
+    <p>출시되면 아래 번호로<br>문자를 보내드릴게요.</p>
+    <p class="big" id="doneNum"></p>
+    <div class="box">
+      <p>문자에 있는 링크를 누르면 바로 설치 화면으로 이동해요. 가족분이 대신 설치해 드려도 괜찮아요.</p>
+    </div>
+  </div>
+  </div>
+
+  <p class="note">FAN FOR U는 특정 소속사나 방송사가 운영하는 공식 서비스가 아니라, 팬이 쓰기 편하도록 만든 독립 서비스입니다.</p>
+
+  <footer>
+    <nav>
+      <a href="/fanforu/">소개</a>
+      <a href="/fanforu/privacy.html">개인정보처리방침</a>
+      <a href="/fanforu/terms.html">이용약관</a>
+    </nav>
+    <p>&copy; 2026 CIELIEN. FAN FOR U · 비공식 팬 커뮤니티 앱</p>
+  </footer>
+</div>
+</section>
+</main>
+
+<p class="draft" id="draftNote" hidden>시안: 저장 주소 미연결, 입력해도 저장되지 않아요</p>
+
+<script>
+(function(){
+  // 저장 주소. 비어 있으면 시안 모드(저장하지 않고 완료 화면만 보여 줌).
+  // 저장 = Google Apps Script → 시트 「FAN FOR U 사전 신청 명단」(daesung@pocknoq.com)
+  var ENDPOINT = 'https://script.google.com/macros/s/AKfycbwfcIGG0xuX07GL-M1ialUYv1XDKwmEbEA7Ws-bnivvY3qWU-w_EVq1WTw9f7-OZhMXIA/exec';
+
+  var f = document.getElementById('f');
+  var artist = document.getElementById('artist');
+  var phone = document.getElementById('phone');
+  var all = document.getElementById('all');
+  var reqs = Array.prototype.slice.call(document.querySelectorAll('.req-chk'));
+  var btn = document.getElementById('submitBtn');
+
+  if (!ENDPOINT) document.getElementById('draftNote').hidden = false;
+
+  // 현장별 QR에 ?a=가수이름 을 붙이면 미리 채워 둔다. 명단은 페이지에 싣지 않는다.
+  try {
+    var pre = new URLSearchParams(location.search).get('a');
+    if (pre) artist.value = pre.slice(0, 60);
+  } catch (e) {}
+  // 유입 현장 구분용(예: ?src=0927-영탁-팬모임)
+  var src = '';
+  try { src = (new URLSearchParams(location.search).get('src') || '').slice(0, 60); } catch (e) {}
+
+  function digits(v){ return v.replace(/\D/g, '').slice(0, 11); }
+  function fmt(d){
+    if (d.length < 4) return d;
+    if (d.length < 8) return d.slice(0,3) + '-' + d.slice(3);
+    return d.slice(0,3) + '-' + d.slice(3,7) + '-' + d.slice(7);
+  }
+  phone.addEventListener('input', function(){
+    phone.value = fmt(digits(phone.value));
+    if (phone.getAttribute('aria-invalid') === 'true' && validPhone()) setErr(phone, 'phoneErr', false);
+  });
+  artist.addEventListener('input', function(){
+    if (artist.value.trim()) setErr(artist, 'artistErr', false);
+  });
+
+  function validPhone(){ return /^01[016789]\d{7,8}$/.test(digits(phone.value)); }
+  function setErr(el, id, on){
+    if (el) el.setAttribute('aria-invalid', on ? 'true' : 'false');
+    document.getElementById(id).classList.toggle('on', on);
+  }
+
+  all.addEventListener('change', function(){
+    reqs.forEach(function(c){ c.checked = all.checked; });
+    document.getElementById('consentErr').classList.remove('on');
+  });
+  reqs.forEach(function(c){
+    c.addEventListener('change', function(){
+      all.checked = reqs.every(function(x){ return x.checked; });
+      if (all.checked) document.getElementById('consentErr').classList.remove('on');
+    });
+  });
+
+  f.addEventListener('submit', function(e){
+    e.preventDefault();
+    var okA = !!artist.value.trim();
+    var okP = validPhone();
+    var okC = reqs.every(function(c){ return c.checked; });
+    setErr(artist, 'artistErr', !okA);
+    setErr(phone, 'phoneErr', !okP);
+    document.getElementById('consentErr').classList.toggle('on', !okC);
+    if (!okA) { artist.focus(); return; }
+    if (!okP) { phone.focus(); return; }
+    if (!okC) { reqs[0].focus(); return; }
+
+    var d = digits(phone.value);
+    var payload = {
+      artist: artist.value.trim(),
+      stage: (f.querySelector('input[name=stage]:checked') || {}).value,
+      phone: d,
+      consent_privacy: true,
+      consent_sms: true,
+      src: src,
+      website: document.getElementById('website').value,
+      at: new Date().toISOString()
+    };
+
+    btn.setAttribute('aria-disabled', 'true');
+    btn.disabled = true;
+    btn.textContent = '보내는 중…';
+    document.getElementById('sendErr').classList.remove('on');
+
+    var send = ENDPOINT
+      ? fetch(ENDPOINT, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(payload) })
+      : Promise.resolve();
+
+    send.then(function(){
+      document.getElementById('doneNum').textContent = d.slice(0,3) + '-****-' + d.slice(7);
+      f.hidden = true;
+      var done = document.getElementById('done');
+      done.hidden = false;
+      done.focus();
+      document.getElementById('apply').scrollIntoView({ behavior: 'smooth' });
+    }).catch(function(){
+      btn.removeAttribute('aria-disabled');
+      btn.disabled = false;
+      btn.textContent = '출시 알림 받기';
+      document.getElementById('sendErr').classList.add('on');
+    });
+  });
+})();
+</script>
+</body>
+</html>
