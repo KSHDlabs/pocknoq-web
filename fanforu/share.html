@@ -87,7 +87,7 @@ footer a{font-weight:700;text-decoration:none;display:inline-flex;align-items:ce
   <div class="wrap">
     <a class="logo" href="/fanforu/">FAN FOR U</a>
     <h1>함께 응원할 팬분께<br>소개해 주세요</h1>
-    <p>모임에서는 이 화면을 보여주시고,<br>멀리 계신 분께는 링크를 보내주세요.</p>
+    <p>옆에 있는 팬에게는 이 화면을 보여주시고,<br>멀리 계신 분께는 링크를 보내주세요.</p>
   </div>
 </header>
 
@@ -106,8 +106,8 @@ footer a{font-weight:700;text-decoration:none;display:inline-flex;align-items:ce
         <li><b>소개 랭킹 상위 10분</b>은 앱 첫 화면 "이달의 응원 팬"에 닉네임이 올라가요</li>      </ul>
     </div>
     <div class="qr" id="qr" role="img" aria-label="FAN FOR U 신청 페이지로 가는 QR 코드"></div>
-    <p class="qr-t" id="qrT">휴대폰 카메라로 찍으면 바로 신청돼요</p>
-    <p class="qr-s">카메라 앱을 켜고 QR에 비추기만 하면 돼요.</p>
+    <p class="qr-t" id="qrT">휴대폰 카메라로 QR을 비춰주세요</p>
+    <p class="qr-s">옆에 있는 팬에게 이 화면을 보여주면 바로 신청할 수 있어요.</p>
 
     <div class="btns">
       <button class="btn" id="shareBtn" type="button">
@@ -152,7 +152,9 @@ footer a{font-weight:700;text-decoration:none;display:inline-flex;align-items:ce
   try { r = (new URLSearchParams(location.search).get('r') || '').toUpperCase(); } catch (e) {}
   var src = /^[2-9A-HJKMNP-Z]{6}$/.test(r) ? 'r_' + r : 'share';
   var link = TARGET + '?src=' + src;
-  var text = '좋아하는 가수 투표, 스밍, 방송 일정을 한곳에서 챙겨주는 앱이 나온대요. 여기서 신청할 수 있어요.';
+  // 문자는 한 사람에게, 카카오톡은 팬 단톡방에 가는 경우가 많아 말투를 나눈다. 광고처럼 들리지 않게 '같이 보려고', '한번 보세요'.
+  var text = '나 FAN FOR U 사전신청했어요.\n방송 일정이랑 투표 같은 거 챙기기 편할 것 같아서 같이 보려고 보내요 :)\n\n여기서 신청할 수 있어요.';
+  var kakaoText = 'FAN FOR U라는 팬 앱이 나온대요.\n방송 일정이나 투표 같은 걸 한곳에서 볼 수 있다고 해서 저도 신청했어요.\n\n관심 있는 분들은 여기서 한번 보세요 :)';
 
   var box = document.getElementById('qr');
   if (window.qrcode) {
@@ -185,10 +187,10 @@ footer a{font-weight:700;text-decoration:none;display:inline-flex;align-items:ce
   }
 
   var msg = document.getElementById('msg');
-  document.getElementById('smsBtn').href = 'sms:?&body=' + encodeURIComponent(text + ' ' + link);
+  document.getElementById('smsBtn').href = 'sms:?&body=' + encodeURIComponent(text + '\n' + link);
 
   function copy(){
-    var all = text + ' ' + link;
+    var all = kakaoText + '\n' + link;
     var ok = function(){ msg.textContent = '복사했어요. 카카오톡 대화방에 붙여 넣어 주세요.'; };
     if (navigator.clipboard) navigator.clipboard.writeText(all).then(ok, function(){ msg.textContent = all; });
     else msg.textContent = all;
@@ -196,7 +198,7 @@ footer a{font-weight:700;text-decoration:none;display:inline-flex;align-items:ce
   document.getElementById('copyBtn').addEventListener('click', copy);
   // 휴대폰 공유창에서 카카오톡을 고른다. 공유창이 없는 PC에서는 복사로 대신한다.
   document.getElementById('shareBtn').addEventListener('click', function(){
-    if (navigator.share) navigator.share({ title: 'FAN FOR U', text: text, url: link }).catch(function(){});
+    if (navigator.share) navigator.share({ text: kakaoText, url: link }).catch(function(){});
     else copy();
   });
 })();
