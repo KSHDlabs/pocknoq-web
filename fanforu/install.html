@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0C12AB">
+<meta name="robots" content="noindex, nofollow">
+<title>FAN FOR U 설치 방법</title>
+<meta name="description" content="FAN FOR U를 휴대폰에 설치하는 방법을 그림으로 알려드려요.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231B5FE8'/%3E%3Cpath d='M16 25.5C16 25.5 7.5 20.4 7.5 14.6a4.6 4.6 0 0 1 8.5-2.5 4.6 4.6 0 0 1 8.5 2.5C24.5 20.4 16 25.5 16 25.5Z' fill='%23fff'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+/* 설치 방법 그림 안내. 알림톡·문자의 [설치 방법 보기] 링크가 오는 곳.
+   그림은 실제 스토어 캡처 대신 단순화한 그림이다(스토어 화면은 수시로 바뀌어서). 본문 18px 이상, 버튼 60px 이상. */
+:root{--navy:#0C12AB;--navy-2:#070B7A;--blue:#1455FF;--blue-l:#EDF3FF;--ink:#111215;--body:#3A3F48;--muted:#676B73;--line:#E4E7EE;--bg:#F5F7FB;
+  --play:#01875F;--apple:#0A7AFF;--ease:cubic-bezier(.32,.72,0,1)}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;color-scheme:light}
+body{margin:0;background:var(--bg);color:var(--body);
+  font-family:'Pretendard Variable',Pretendard,-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+  font-size:18px;line-height:1.7;word-break:keep-all;overflow-wrap:break-word;-webkit-font-smoothing:antialiased}
+.wrap{max-width:520px;margin:0 auto;padding:0 max(20px,env(safe-area-inset-left)) 0 max(20px,env(safe-area-inset-right))}
+:where(a,button):focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:10px}
+a,button{touch-action:manipulation;-webkit-tap-highlight-color:rgba(20,85,255,.15)}
+[hidden]{display:none !important}
+
+.top{background:radial-gradient(120% 80% at 50% 0%,#2A31D6 0%,var(--navy) 60%,var(--navy-2) 100%);color:#fff;text-align:center;
+  padding:calc(16px + env(safe-area-inset-top)) 0 30px}
+.logo{display:inline-flex;align-items:center;min-height:44px;font-size:20px;font-weight:900;color:#fff;text-decoration:none}
+.top h1{margin:14px 0 6px;font-size:clamp(30px,8.4vw,40px);line-height:1.25;font-weight:900;letter-spacing:-.03em}
+.top p{margin:0;color:#DDE4FF;font-size:19px}
+
+.tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:6px;margin:20px 0}
+.tab{min-height:56px;border:0;border-radius:14px;background:transparent;font:inherit;font-size:19px;font-weight:800;color:var(--muted);cursor:pointer}
+.tab[aria-selected="true"]{background:var(--navy);color:#fff}
+
+.step{background:#fff;border:1px solid var(--line);border-radius:24px;padding:22px 20px;margin:0 0 16px;display:grid;grid-template-columns:1fr;gap:14px}
+.step h2{margin:0;display:flex;align-items:center;gap:12px;font-size:22px;font-weight:800;color:var(--ink);letter-spacing:-.02em}
+.n{flex:0 0 36px;width:36px;height:36px;border-radius:50%;background:var(--navy);color:#fff;font-size:19px;font-weight:900;display:grid;place-items:center}
+.step p{margin:0;font-size:18px}
+.step b{color:var(--ink)}
+
+/* 그림: 휴대폰 화면을 단순하게 */
+.pic{border:2px solid var(--line);border-radius:22px;background:var(--bg);padding:16px;display:grid;gap:12px}
+.bubble{background:#fff;border-radius:14px;padding:12px 14px;font-size:15px;color:var(--ink);box-shadow:0 2px 6px rgba(0,0,0,.06)}
+.bubble .fake-btn{margin-top:8px;height:40px;border-radius:8px;background:#F2F2F2;display:grid;place-items:center;font-weight:700;position:relative}
+.finger{position:absolute;right:18px;bottom:-14px;font-size:30px;line-height:1;filter:drop-shadow(0 2px 2px rgba(0,0,0,.2))}
+.store{background:#fff;border-radius:14px;padding:14px;display:grid;grid-template-columns:56px 1fr;gap:12px;align-items:center;position:relative}
+.store .ic{width:56px;height:56px;border-radius:14px;background:var(--navy);color:#fff;font-size:11px;font-weight:900;display:grid;place-items:center;text-align:center;line-height:1.1}
+.store .nm{font-size:17px;font-weight:800;color:var(--ink)}
+.store .sub{font-size:14px;color:var(--muted)}
+.store .get{grid-column:1 / -1;height:46px;border-radius:10px;display:grid;place-items:center;color:#fff;font-size:18px;font-weight:800;position:relative}
+.play .get{background:var(--play)}
+.apple .get{background:var(--apple);border-radius:999px;width:110px;justify-self:end;height:40px;font-size:17px}
+.hl{outline:4px solid #FFD60A;outline-offset:4px}
+
+.help{background:var(--blue-l);border-radius:20px;padding:20px;margin:6px 0 16px;color:#28366B}
+.help h2{margin:0 0 6px;font-size:20px;font-weight:800;color:var(--ink)}
+.help ul{margin:0;padding-left:1.2em}
+.btn{display:flex;width:100%;align-items:center;justify-content:center;gap:10px;min-height:62px;border-radius:18px;background:var(--navy);color:#fff;
+  font-size:20px;font-weight:800;text-decoration:none;margin-top:12px}
+.btn.alt{background:#fff;color:var(--navy);border:2px solid var(--navy)}
+footer{margin-top:24px;padding:20px 0 calc(40px + env(safe-area-inset-bottom));border-top:1px solid var(--line);font-size:15px;color:var(--muted)}
+footer a{font-weight:700;text-decoration:none;display:inline-flex;align-items:center;min-height:44px;margin-right:18px;color:var(--blue)}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="/fanforu/">FAN FOR U</a>
+    <h1>설치 방법</h1>
+    <p>세 번만 누르면 끝나요.</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="tabs" role="tablist" aria-label="휴대폰 종류">
+    <button class="tab" role="tab" id="tA" aria-controls="pA" aria-selected="true">갤럭시·안드로이드</button>
+    <button class="tab" role="tab" id="tI" aria-controls="pI" aria-selected="false">아이폰</button>
+  </div>
+
+  <!-- 안드로이드 -->
+  <section id="pA" role="tabpanel" aria-labelledby="tA">
+    <div class="step">
+      <h2><span class="n">1</span>[설치하기] 누르기</h2>
+      <p>FAN FOR U에서 받은 <b>카카오톡이나 문자</b>를 열고 <b>[설치하기]</b>를 눌러요.</p>
+      <div class="pic" aria-hidden="true">
+        <div class="bubble">[FAN FOR U] 기다리시던 앱이 나왔어요<div class="fake-btn hl">설치하기<span class="finger">👆</span></div></div>
+      </div>
+    </div>
+    <div class="step">
+      <h2><span class="n">2</span>초록색 [설치] 누르기</h2>
+      <p>Play 스토어가 열리면 <b>초록색 [설치]</b> 버튼을 눌러요. 다 받아질 때까지 잠시 기다려요.</p>
+      <div class="pic play" aria-hidden="true">
+        <div class="store"><div class="ic">FAN<br>FOR U</div><div><div class="nm">FAN FOR U</div><div class="sub">팬 커뮤니티</div></div>
+          <div class="get hl">설치<span class="finger">👆</span></div></div>
+      </div>
+    </div>
+    <div class="step">
+      <h2><span class="n">3</span>[열기] 누르기</h2>
+      <p>버튼이 <b>[열기]</b>로 바뀌면 눌러요. 다음부터는 휴대폰 화면의 <b>FAN FOR U 그림</b>을 누르면 돼요.</p>
+      <div class="pic play" aria-hidden="true">
+        <div class="store"><div class="ic">FAN<br>FOR U</div><div><div class="nm">FAN FOR U</div><div class="sub">설치됨</div></div>
+          <div class="get hl">열기<span class="finger">👆</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 아이폰 -->
+  <section id="pI" role="tabpanel" aria-labelledby="tI" hidden>
+    <div class="step">
+      <h2><span class="n">1</span>[설치하기] 누르기</h2>
+      <p>FAN FOR U에서 받은 <b>카카오톡이나 문자</b>를 열고 <b>[설치하기]</b>를 눌러요.</p>
+      <div class="pic" aria-hidden="true">
+        <div class="bubble">[FAN FOR U] 기다리시던 앱이 나왔어요<div class="fake-btn hl">설치하기<span class="finger">👆</span></div></div>
+      </div>
+    </div>
+    <div class="step">
+      <h2><span class="n">2</span>파란색 [받기] 누르기</h2>
+      <p>App Store가 열리면 <b>파란색 [받기]</b>를 누르고, 한 번 더 확인하라고 나오면 <b>옆 버튼을 두 번 누르거나 얼굴 인식</b>을 해요.</p>
+      <div class="pic apple" aria-hidden="true">
+        <div class="store"><div class="ic">FAN<br>FOR U</div><div><div class="nm">FAN FOR U</div><div class="sub">팬 커뮤니티</div></div>
+          <div class="get hl">받기<span class="finger">👆</span></div></div>
+      </div>
+    </div>
+    <div class="step">
+      <h2><span class="n">3</span>[열기] 누르기</h2>
+      <p>버튼이 <b>[열기]</b>로 바뀌면 눌러요. 다음부터는 휴대폰 화면의 <b>FAN FOR U 그림</b>을 누르면 돼요.</p>
+      <div class="pic apple" aria-hidden="true">
+        <div class="store"><div class="ic">FAN<br>FOR U</div><div><div class="nm">FAN FOR U</div><div class="sub">설치됨</div></div>
+          <div class="get hl">열기<span class="finger">👆</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="help" aria-labelledby="helpT">
+    <h2 id="helpT">잘 안 되시나요?</h2>
+    <ul>
+      <li>스토어 비밀번호가 기억나지 않으면 가족분께 부탁해 주세요.</li>
+      <li>와이파이가 연결된 곳에서 받으면 더 빨라요.</li>
+    </ul>
+    <a class="btn" href="/fanforu/app.html?src=install">설치 화면 열기</a>
+    <a class="btn alt" id="askFamily" href="#">가족에게 설치 부탁하기</a>
+  </section>
+
+  <footer>
+    <a href="/fanforu/">소개</a>
+    <a href="/fanforu/privacy.html">개인정보처리방침</a>
+  </footer>
+</main>
+
+<script>
+(function(){
+  var tabs = [document.getElementById('tA'), document.getElementById('tI')];
+  function select(i){
+    tabs.forEach(function(t, j){
+      t.setAttribute('aria-selected', i === j ? 'true' : 'false');
+      t.tabIndex = i === j ? 0 : -1;
+      document.getElementById(t.getAttribute('aria-controls')).hidden = i !== j;
+    });
+  }
+  tabs.forEach(function(t, i){
+    t.addEventListener('click', function(){ select(i); });
+    t.addEventListener('keydown', function(e){
+      if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { var k = 1 - i; select(k); tabs[k].focus(); }
+    });
+  });
+  // 아이폰이면 아이폰 탭부터 (아이패드는 PC처럼 보이기도 해서 터치 여부로 한 번 더 본다)
+  var ua = navigator.userAgent || '';
+  select(/iphone|ipad|ipod/i.test(ua) || (/macintosh/i.test(ua) && navigator.maxTouchPoints > 1) ? 1 : 0);
+
+  var text = 'FAN FOR U라는 팬 앱을 설치하고 싶은데 좀 도와줘. 설치 방법은 여기 있어: https://pocknoq.com/fanforu/install.html';
+  document.getElementById('askFamily').href = 'sms:?&body=' + encodeURIComponent(text);
+})();
+</script>
+</body>
+</html>

@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#0C12AB">
 <meta name="robots" content="noindex, nofollow">
 <title>출시 알림 신청 · FAN FOR U</title>
-<meta name="description" content="FAN FOR U가 출시되면 문자로 먼저 알려드려요.">
+<meta name="description" content="FAN FOR U가 출시되면 카카오톡이나 문자로 먼저 알려드려요.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231B5FE8'/%3E%3Cpath d='M16 25.5C16 25.5 7.5 20.4 7.5 14.6a4.6 4.6 0 0 1 8.5-2.5 4.6 4.6 0 0 1 8.5 2.5C24.5 20.4 16 25.5 16 25.5Z' fill='%23fff'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
@@ -91,6 +91,9 @@ a,button,label{touch-action:manipulation;-webkit-tap-highlight-color:rgba(20,85,
 .inp::placeholder{color:#8B90A0;font-weight:500}
 .inp:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 4px rgba(20,85,255,.18)}
 .inp[aria-invalid="true"]{border-color:var(--err)}
+.num.opt{background:#fff;color:var(--navy);border:2px solid var(--navy)}
+.opt-t{font-size:17px;font-weight:600;color:var(--muted)}
+.ref-link{background:var(--ok-l);color:#14532D;border-radius:14px;padding:14px 16px;font-size:17px;font-weight:700;margin-left:0}
 .err{display:none;color:var(--err);font-size:16px;font-weight:700;margin:8px 0 0}
 .err.on{display:block}
 
@@ -142,6 +145,15 @@ details[open] summary::after{transform:rotate(-135deg);margin-top:4px}
 .done .big{margin:10px 0 0;font-size:28px;font-weight:900;color:var(--ink);letter-spacing:.02em}
 .done .box{background:var(--bg);border-radius:16px;padding:16px 18px;text-align:left;margin:20px 0 0}
 .done .box p{font-size:17px}
+/* 완료 화면 공유: 가족에게 부탁 / 팬에게 알리기 */
+.share{margin:24px 0 0;padding-top:22px;border-top:1px dashed var(--line)}
+.share-btn{display:flex;width:100%;align-items:center;justify-content:center;gap:10px;min-height:62px;
+  border:0;border-radius:18px;background:var(--navy);color:#fff;font:inherit;font-size:20px;font-weight:800;
+  text-decoration:none;cursor:pointer;transition:transform .5s var(--ease)}
+.share-btn:active{transform:scale(.985)}
+.share-btn.alt{background:#fff;color:var(--navy);border:2px solid var(--navy);margin-top:14px}
+.share-btn svg{width:22px;height:22px}
+.share-hint{margin:8px 0 0;font-size:16px !important;color:var(--muted)}
 
 .note{margin:18px 0 0;font-size:16px;color:#28366B;background:var(--blue-l);border-radius:16px;padding:16px 18px;line-height:1.65}
 
@@ -182,7 +194,7 @@ footer p{margin:6px 0 0}
     </div>
     <div class="hero-copy">
       <h1>트로트 팬 활동,<br><em>이제 한곳에서</em></h1>
-      <p class="lead">좋아하는 가수만 알려주세요.<br>FAN FOR U가 나오면<br>문자로 먼저 알려드릴게요.</p>
+      <p class="lead">좋아하는 가수만 알려주세요.<br>FAN FOR U가 나오면<br>카카오톡이나 문자로 먼저 알려드릴게요.</p>
       <a class="go" href="#apply">출시 알림 받기
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
       </a>
@@ -243,6 +255,23 @@ footer p{margin:6px 0 0}
       <p class="err" id="phoneErr" role="alert">휴대폰 번호 11자리를 확인해 주세요.</p>
     </div>
 
+    <div class="step">
+      <label class="step-t" for="nick"><span class="num opt" aria-hidden="true">4</span>팬 닉네임 <span class="opt-t">(선택)</span></label>
+      <p class="hint" id="nickHint">소개 랭킹에 이 이름으로 올라가요. 팬카페 닉네임을 적으시면 소개받은 분이 찾기 쉬워요.</p>
+      <input class="inp" id="nick" name="nick" type="text" autocomplete="nickname" maxlength="20"
+             placeholder="예: 탁이사랑" aria-describedby="nickHint">
+    </div>
+
+    <div class="step">
+      <label class="step-t" for="refBy"><span class="num opt" aria-hidden="true">5</span>소개해 주신 분 <span class="opt-t">(선택)</span></label>
+      <div id="refByLink" class="ref-link" hidden>소개 링크로 오셨어요. 소개해 주신 분께 자동으로 기록돼요.</div>
+      <div id="refByBox">
+        <p class="hint" id="refByHint">이 앱을 알려주신 분의 팬 닉네임을 적어주세요. 그분의 응원 레벨이 올라가요.</p>
+        <input class="inp" id="refBy" name="ref_by" type="text" autocomplete="off" maxlength="20"
+               placeholder="소개해 주신 분 닉네임" aria-describedby="refByHint">
+      </div>
+    </div>
+
     <div class="agree">
       <label class="chk chk-all"><input type="checkbox" id="all">모두 동의해요</label>
 
@@ -250,18 +279,18 @@ footer p{margin:6px 0 0}
       <details>
         <summary>자세히 보기</summary>
         <table class="terms">
-          <tr><th scope="row">수집 항목</th><td>휴대폰 번호, 좋아하는 가수, 팬 활동 경험</td></tr>
-          <tr><th scope="row">이용 목적</th><td>FAN FOR U 출시 알림 문자 발송, 가수별 서비스 준비</td></tr>
-          <tr><th scope="row">보유 기간</th><td>출시 알림을 보낸 뒤 바로 파기합니다. 출시 전이라도 신청일로부터 6개월이 지나면 파기합니다.</td></tr>
+          <tr><th scope="row">수집 항목</th><td>휴대폰 번호, 좋아하는 가수, 팬 활동 경험, 팬 닉네임과 소개해 주신 분(적으신 경우만)</td></tr>
+          <tr><th scope="row">이용 목적</th><td>신청 확인과 FAN FOR U 출시 안내 발송(카카오 알림톡 또는 문자), 설치 도움 안내, 소개 기록과 응원 레벨·소개 랭킹 표시(닉네임만 공개), 가수별 서비스 준비</td></tr>
+          <tr><th scope="row">보유 기간</th><td>출시 안내를 보낸 날로부터 30일 뒤 파기합니다. 출시 전이라도 신청일로부터 6개월이 지나면 파기합니다.</td></tr>
           <tr><th scope="row">보관</th><td>Google 스프레드시트(Google LLC, 국외 서버)에 보관합니다. <a href="/fanforu/privacy.html">개인정보처리방침</a> 8항 참고</td></tr>
         </table>
         <p class="terms-note">동의하지 않으셔도 됩니다. 다만 동의하지 않으시면 출시 알림을 보내드릴 수 없어요. 만 14세 미만은 신청할 수 없습니다.</p>
       </details>
 
-      <label class="chk"><input type="checkbox" class="req-chk" id="c2" name="consent_sms"><span><span class="req">[필수]</span> 출시 알림 문자 수신 동의</span></label>
+      <label class="chk"><input type="checkbox" class="req-chk" id="c2" name="consent_sms"><span><span class="req">[필수]</span> 출시 안내 수신 동의 <span style="white-space:nowrap">(카카오톡 또는 문자)</span></span></label>
       <details>
         <summary>자세히 보기</summary>
-        <p class="terms-note">FAN FOR U 출시 소식을 문자로 한 번 보내드립니다. 오후 9시부터 다음 날 오전 8시 사이에는 보내지 않습니다. 원하지 않으시면 문자에 적힌 방법이나 <a href="mailto:kshd@pocknoq.com">kshd@pocknoq.com</a>으로 언제든 수신을 거부할 수 있어요.</p>
+        <p class="terms-note">신청 확인 안내 1회, 출시 안내 1회를 카카오 알림톡으로 보내드립니다. 카카오톡을 쓰지 않으시면 문자로 보내드려요. 출시 뒤 아직 설치 전이시면 설치 방법을 한 번 더 보내드립니다. 오후 9시부터 다음 날 오전 8시 사이에는 보내지 않습니다. 원하지 않으시면 문자에 적힌 방법이나 <a href="mailto:kshd@pocknoq.com">kshd@pocknoq.com</a>으로 언제든 수신을 거부할 수 있어요.</p>
       </details>
 
       <p class="err form-err" id="consentErr" role="alert">필수 동의 두 가지를 체크해 주세요.</p>
@@ -276,10 +305,23 @@ footer p{margin:6px 0 0}
       <svg viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
     </div>
     <h2>신청이 완료되었어요</h2>
-    <p>출시되면 아래 번호로<br>문자를 보내드릴게요.</p>
+    <p>출시되면 아래 번호로<br>카카오톡이나 문자를 보내드릴게요.</p>
     <p class="big" id="doneNum"></p>
     <div class="box">
-      <p>문자에 있는 링크를 누르면 바로 설치 화면으로 이동해요. 가족분이 대신 설치해 드려도 괜찮아요.</p>
+      <p>안내에 있는 링크를 누르면 바로 설치 화면으로 이동해요. 가족분이 대신 설치해 드려도 괜찮아요.</p>
+    </div>
+
+    <div class="share">
+      <a class="share-btn" id="askFamily" href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H8l-4 4z"/></svg>
+        가족에게 설치 부탁하기
+      </a>
+      <p class="share-hint">문자 앱이 열리고 부탁 글이 미리 적혀 있어요. 받는 사람만 고르세요.</p>
+      <a class="share-btn alt" id="tellFan" href="/fanforu/share.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>
+        같이 응원할 팬에게 소개하기
+      </a>
+      <p class="share-hint">소개하신 분이 신청할 때마다 응원 레벨이 올라가요. 가수가 FAN FOR U에 함께하게 되면 소개 랭킹이 가수에게도 전해져요.</p>
     </div>
   </div>
   </div>
@@ -305,6 +347,11 @@ footer p{margin:6px 0 0}
   // 저장 주소. 비어 있으면 시안 모드(저장하지 않고 완료 화면만 보여 줌).
   // 저장 = Google Apps Script → 시트 「FAN FOR U 사전 신청 명단」(daesung@pocknoq.com)
   var ENDPOINT = 'https://script.google.com/macros/s/AKfycbwfcIGG0xuX07GL-M1ialUYv1XDKwmEbEA7Ws-bnivvY3qWU-w_EVq1WTw9f7-OZhMXIA/exec';
+  // 로컬 미리보기에서 누른 테스트 신청이 실제 명단에 섞이지 않게 한다
+  if (/^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname) || location.protocol === 'file:') ENDPOINT = '';
+  // 동의 문구 판. 2 = 알림톡·재안내·30일 보관 문구(2026-09-26). 시트에서 발송 대상을 나누는 데 쓴다.
+  var CONSENT_VER = 2;
+  var SITE = 'https://pocknoq.com/fanforu/';
 
   var f = document.getElementById('f');
   var artist = document.getElementById('artist');
@@ -323,6 +370,20 @@ footer p{margin:6px 0 0}
   // 유입 현장 구분용(예: ?src=0927-영탁-팬모임)
   var src = '';
   try { src = (new URLSearchParams(location.search).get('src') || '').slice(0, 60); } catch (e) {}
+  // 소개 링크(src=r_코드)로 왔으면 "소개해 주신 분" 칸 대신 자동 기록 안내를 보여준다
+  if (/^r_/.test(src)) {
+    document.getElementById('refByLink').hidden = false;
+    document.getElementById('refByBox').hidden = true;
+  }
+
+  // 이 신청자의 소개 코드. 이 사람이 공유한 링크로 들어온 신청은 시트에 src = r_코드 로 남는다.
+  // 헷갈리는 글자(0 O 1 I L)는 뺀다.
+  var refCode = (function(){
+    var abc = '23456789ABCDEFGHJKMNPQRSTUVWXYZ', s = '', r = new Uint8Array(6);
+    (window.crypto || window.msCrypto).getRandomValues(r);
+    for (var i = 0; i < r.length; i++) s += abc[r[i] % abc.length];
+    return s;
+  })();
 
   function digits(v){ return v.replace(/\D/g, '').slice(0, 11); }
   function fmt(d){
@@ -374,6 +435,11 @@ footer p{margin:6px 0 0}
       phone: d,
       consent_privacy: true,
       consent_sms: true,
+      consent_ver: CONSENT_VER,
+      ref_code: refCode,
+      nick: document.getElementById('nick').value.trim(),
+      // 소개 링크로 왔으면 src(r_코드)로 이미 기록되므로 닉네임 칸은 보내지 않는다
+      ref_by: /^r_/.test(src) ? '' : document.getElementById('refBy').value.trim(),
       src: src,
       website: document.getElementById('website').value,
       at: new Date().toISOString()
@@ -402,6 +468,15 @@ footer p{margin:6px 0 0}
       document.getElementById('sendErr').classList.add('on');
     });
   });
+
+  // ── 완료 화면 공유 ──
+  // 가족에게: 번호를 우리가 받지 않고, 본인 문자 앱에서 직접 보내게 한다.
+  var familyText = 'FAN FOR U라는 팬 앱 출시 알림을 신청했어. 출시되면 나한테 안내가 오는데, 그때 설치 좀 도와줘. ' + SITE;
+  // sms:?&body= 는 안드로이드와 아이폰에서 모두 본문이 채워진다
+  document.getElementById('askFamily').href = 'sms:?&body=' + encodeURIComponent(familyText);
+
+  // 팬에게: 이 신청자의 소개 페이지(QR·카톡·문자). 알림톡·문자의 [팬에게 소개하기]도 같은 주소다.
+  document.getElementById('tellFan').href = '/fanforu/share.html?r=' + refCode;
 })();
 </script>
 </body>

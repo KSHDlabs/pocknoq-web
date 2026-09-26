@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0C12AB">
+<meta name="robots" content="noindex, nofollow">
+<title>FAN FOR U 설치하기</title>
+<meta name="description" content="휴대폰에 맞는 설치 화면으로 이동해요.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231B5FE8'/%3E%3Cpath d='M16 25.5C16 25.5 7.5 20.4 7.5 14.6a4.6 4.6 0 0 1 8.5-2.5 4.6 4.6 0 0 1 8.5 2.5C24.5 20.4 16 25.5 16 25.5Z' fill='%23fff'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+/* 알림톡·문자의 [설치하기] 링크가 오는 곳. 안드로이드는 Play 스토어, 아이폰은 App Store로 바로 보낸다.
+   스토어 주소가 아직 없으면(출시 전) "곧 출시돼요" 안내를 보여준다. */
+:root{--navy:#0C12AB;--navy-2:#070B7A;--blue:#1455FF;--blue-l:#EDF3FF;--ink:#111215;--body:#3A3F48;--muted:#676B73;--line:#E4E7EE;--bg:#F5F7FB}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;color-scheme:light}
+body{margin:0;min-height:100vh;background:radial-gradient(120% 70% at 50% 0%,#2A31D6 0%,var(--navy) 55%,var(--navy-2) 100%);color:#fff;
+  font-family:'Pretendard Variable',Pretendard,-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+  font-size:18px;line-height:1.7;word-break:keep-all;-webkit-font-smoothing:antialiased;display:flex;align-items:center}
+.wrap{width:100%;max-width:480px;margin:0 auto;padding:40px max(20px,env(safe-area-inset-left)) calc(40px + env(safe-area-inset-bottom));text-align:center}
+.logo{font-size:22px;font-weight:900}
+h1{margin:22px 0 8px;font-size:clamp(28px,8vw,38px);line-height:1.3;font-weight:900;letter-spacing:-.03em}
+p{margin:0;color:#DDE4FF;font-size:19px}
+.btns{display:grid;gap:12px;margin-top:30px}
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;min-height:64px;border-radius:18px;background:#fff;color:var(--navy);
+  font-size:20px;font-weight:800;text-decoration:none}
+.btn.alt{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.6)}
+.btn svg{width:24px;height:24px}
+.help{margin-top:26px;font-size:17px;color:#C9D3FF}
+.help a{color:#fff;font-weight:700}
+[hidden]{display:none !important}
+:where(a):focus-visible{outline:3px solid #fff;outline-offset:3px;border-radius:12px}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <div class="logo">FAN FOR U</div>
+
+  <section id="going" hidden>
+    <h1>설치 화면으로<br>이동하고 있어요</h1>
+    <p>잠시만 기다려 주세요.</p>
+  </section>
+
+  <section id="pick" hidden>
+    <h1>휴대폰 종류를<br>골라 주세요</h1>
+    <p>누르면 설치 화면이 열려요.</p>
+    <div class="btns">
+      <a class="btn" id="toPlay" href="#">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 3.5v17l9.5-8.5L4 3.5zm10.9 7.2L6.6 3.1l10.6 6.1-2.3 1.5zm0 2.6l2.3 1.5-10.6 6.1 8.3-7.6zm3.4-2.9 2.3 1.3c.7.4.7 1.3 0 1.7l-2.3 1.3-2.6-2.1 2.6-2.2z"/></svg>
+        갤럭시 등 안드로이드
+      </a>
+      <a class="btn" id="toApple" href="#">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.6c0-2.4 2-3.6 2.1-3.7-1.2-1.7-3-1.9-3.6-2-1.5-.2-3 .9-3.8.9-.8 0-2-.9-3.3-.9-1.7 0-3.3 1-4.2 2.5-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.3-.8 1.6 0 2 .8 3.4.8 1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9-.1 0-2.9-1.1-2.9-4.2zM13.9 5.2c.7-.9 1.2-2 1.1-3.2-1 0-2.3.7-3 1.6-.7.8-1.2 2-1.1 3.1 1.2.1 2.3-.6 3-1.5z"/></svg>
+        아이폰
+      </a>
+    </div>
+  </section>
+
+  <section id="soon" hidden>
+    <h1>FAN FOR U가<br>곧 출시돼요</h1>
+    <p>출시되면 카카오톡이나 문자로 바로 알려드릴게요.</p>
+    <div class="btns">
+      <a class="btn" href="/fanforu/signup.html">출시 알림 신청하기</a>
+    </div>
+  </section>
+
+  <p class="help">설치가 어려우시면 <a href="/fanforu/install.html">설치 방법 그림 안내</a>를 보시거나<br>가족분께 이 화면을 보여주세요.</p>
+</main>
+
+<script>
+(function(){
+  // ── 출시되면 이 두 줄만 채운다 ──
+  var PLAY_URL  = ''; // 예: https://play.google.com/store/apps/details?id=패키지이름
+  var APPLE_URL = ''; // 예: https://apps.apple.com/kr/app/fan-for-u/id앱번호
+
+  var src = '';
+  try { src = (new URLSearchParams(location.search).get('src') || '').slice(0, 40); } catch (e) {}
+  // Play 스토어는 referrer로 유입 경로를 넘길 수 있다 (앱에서 Install Referrer로 읽음)
+  var play = PLAY_URL && (PLAY_URL + (PLAY_URL.indexOf('?') < 0 ? '?' : '&') + 'referrer=' + encodeURIComponent('src=' + src));
+  var show = function(id){ document.getElementById(id).hidden = false; };
+
+  if (!PLAY_URL && !APPLE_URL) { show('soon'); return; }
+  document.getElementById('toPlay').href = play || '#';
+  document.getElementById('toApple').href = APPLE_URL || '#';
+  if (!PLAY_URL) document.getElementById('toPlay').hidden = true;
+  if (!APPLE_URL) document.getElementById('toApple').hidden = true;
+
+  var ua = navigator.userAgent || '';
+  var isAndroid = /android/i.test(ua);
+  // 아이패드는 PC처럼 보이기도 해서 터치 여부로 한 번 더 본다
+  var isApple = /iphone|ipad|ipod/i.test(ua) || (/macintosh/i.test(ua) && navigator.maxTouchPoints > 1);
+  var target = isAndroid ? play : isApple ? APPLE_URL : '';
+  if (target) { show('going'); location.replace(target); }
+  else show('pick');
+})();
+</script>
+</body>
+</html>

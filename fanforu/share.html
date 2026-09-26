@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0C12AB">
+<meta name="robots" content="noindex, nofollow">
+<title>FAN FOR U 소개하기</title>
+<meta name="description" content="함께 응원할 팬분께 FAN FOR U를 소개해 주세요.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231B5FE8'/%3E%3Cpath d='M16 25.5C16 25.5 7.5 20.4 7.5 14.6a4.6 4.6 0 0 1 8.5-2.5 4.6 4.6 0 0 1 8.5 2.5C24.5 20.4 16 25.5 16 25.5Z' fill='%23fff'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+/* 신청자 개인 소개 페이지. 알림톡·문자의 [팬에게 소개하기] 버튼이 여기로 온다.
+   모임에서 이 화면의 QR을 보여주면 상대가 카메라로 찍어 바로 신청한다.
+   색·글자 크기는 signup.html과 같다(고령층 기준 본문 18px, 버튼 60px 이상). */
+:root{
+  --navy:#0C12AB; --navy-2:#070B7A; --blue:#1455FF; --blue-l:#EDF3FF;
+  --ink:#111215; --body:#3A3F48; --muted:#676B73; --line:#E4E7EE;
+  --bg:#F5F7FB; --ease:cubic-bezier(.32,.72,0,1);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;color-scheme:light}
+body{margin:0;background:var(--bg);color:var(--body);
+  font-family:'Pretendard Variable',Pretendard,-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+  font-size:18px;line-height:1.7;word-break:keep-all;overflow-wrap:break-word;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:var(--blue)}
+:where(a,button):focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:8px}
+a,button{touch-action:manipulation;-webkit-tap-highlight-color:rgba(20,85,255,.15)}
+.wrap{max-width:520px;margin:0 auto;padding:0 max(20px,env(safe-area-inset-left)) 0 max(20px,env(safe-area-inset-right))}
+
+.top{background:radial-gradient(120% 80% at 50% 0%,#2A31D6 0%,var(--navy) 60%,var(--navy-2) 100%);color:#fff;
+  padding:calc(16px + env(safe-area-inset-top)) 0 96px;text-align:center}
+.logo{display:inline-flex;align-items:center;min-height:44px;font-size:20px;font-weight:900;color:#fff;text-decoration:none}
+.top h1{margin:18px 0 0;font-size:clamp(30px,8.4vw,42px);line-height:1.25;font-weight:900;letter-spacing:-.035em}
+.top p{margin:10px auto 0;font-size:19px;color:#DDE4FF;max-width:20em}
+
+.card{background:#fff;border:1px solid var(--line);border-radius:26px;margin-top:-72px;padding:26px 22px 24px;text-align:center;
+  box-shadow:0 2px 4px rgba(12,18,171,.04),0 18px 44px rgba(12,18,171,.09)}
+/* 내가 소개한 팬 수. 명단 시트에서 src = r_코드 인 신청만 센다 */
+.tally{background:var(--blue-l);border-radius:18px;padding:16px 18px;margin:0 0 22px}
+.tally-n{margin:0;font-size:20px;font-weight:800;color:var(--ink)}
+.tally-n b{font-size:30px;font-weight:900;color:var(--blue);margin:0 2px}
+.tally-who{margin:0 0 2px;font-size:16px;font-weight:700;color:#28366B}
+.tally-r{display:inline-block;margin:8px 0 0;background:var(--navy);color:#fff;font-size:16px;font-weight:800;border-radius:999px;padding:4px 14px}
+.perks{text-align:left;border:2px solid var(--blue-l);border-radius:18px;padding:16px 18px;margin:0 0 22px}
+.perks-t{margin:0 0 8px;font-size:18px;font-weight:800;color:var(--ink)}
+.perks ul{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.perks li{position:relative;padding-left:26px;font-size:16.5px;line-height:1.55;color:var(--body)}
+.perks li::before{content:"";position:absolute;left:4px;top:.55em;width:12px;height:12px;border-radius:50%;background:var(--blue)}
+.perks b{color:var(--navy)}
+[hidden]{display:none !important}
+.qr{width:min(260px,70vw);margin:0 auto;padding:12px;background:#fff;border:2px solid var(--line);border-radius:18px}
+.qr svg{display:block;width:100%;height:auto}
+.qr-t{margin:14px 0 0;font-size:20px;font-weight:800;color:var(--ink)}
+.qr-s{margin:4px 0 0;font-size:17px;color:var(--muted)}
+
+.btns{margin-top:22px;display:grid;gap:12px}
+.btn{display:flex;width:100%;align-items:center;justify-content:center;gap:10px;min-height:62px;
+  border:0;border-radius:18px;background:var(--navy);color:#fff;font:inherit;font-size:20px;font-weight:800;
+  text-decoration:none;cursor:pointer;transition:transform .5s var(--ease)}
+.btn:active{transform:scale(.985)}
+.btn.alt{background:#fff;color:var(--navy);border:2px solid var(--navy)}
+.btn svg{width:22px;height:22px}
+.msg{min-height:1.7em;margin:12px 0 0;font-size:17px;font-weight:700;color:#16A34A}
+
+.how{margin:18px 0 0;background:var(--blue-l);border-radius:18px;padding:18px 20px;color:#28366B;font-size:17px}
+.how h2{margin:0 0 6px;font-size:18px;font-weight:800;color:var(--ink)}
+.how ol{margin:0;padding-left:1.3em}
+
+footer{margin-top:26px;padding:20px 0 calc(40px + env(safe-area-inset-bottom));border-top:1px solid var(--line);font-size:15px;color:var(--muted)}
+footer a{font-weight:700;text-decoration:none;display:inline-flex;align-items:center;min-height:44px;margin-right:18px}
+@media (prefers-reduced-motion:reduce){*{transition-duration:.01ms !important}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="/fanforu/">FAN FOR U</a>
+    <h1>함께 응원할 팬분께<br>소개해 주세요</h1>
+    <p>모임에서는 이 화면을 보여주시고,<br>멀리 계신 분께는 링크를 보내주세요.</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="card" aria-labelledby="qrT">
+    <div class="tally" id="tally" hidden>
+      <p class="tally-who" id="tallyWho"></p>
+      <p class="tally-n" id="tallyN" aria-live="polite"></p>
+      <p class="tally-r" id="tallyR" hidden></p>
+    </div>
+    <div class="perks" aria-labelledby="perksT">
+      <p class="perks-t" id="perksT">한 분이 신청할 때마다 응원 레벨이 올라가요</p>
+      <ul>
+        <li><b>가수가 FAN FOR U에 함께하게 되면</b> 소개 랭킹이 가수에게도 전해져요</li>
+        <li><b>레벨이 오르면</b> 응원 배지가 생겨요</li>
+        <li><b>소개 랭킹 상위 10분</b>은 앱 첫 화면 "이달의 응원 팬"에 닉네임이 올라가요</li>      </ul>
+    </div>
+    <div class="qr" id="qr" role="img" aria-label="FAN FOR U 신청 페이지로 가는 QR 코드"></div>
+    <p class="qr-t" id="qrT">휴대폰 카메라로 찍으면 바로 신청돼요</p>
+    <p class="qr-s">카메라 앱을 켜고 QR에 비추기만 하면 돼요.</p>
+
+    <div class="btns">
+      <button class="btn" id="shareBtn" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>
+        카카오톡으로 보내기
+      </button>
+      <a class="btn alt" id="smsBtn" href="#">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H8l-4 4z"/></svg>
+        문자로 보내기
+      </a>
+      <button class="btn alt" id="copyBtn" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h8"/></svg>
+        링크 복사하기
+      </button>
+    </div>
+    <p class="msg" id="msg" role="status" aria-live="polite"></p>
+  </section>
+
+  <section class="how" aria-labelledby="howT">
+    <h2 id="howT">이 페이지를 다시 열고 싶을 때</h2>
+    <ol>
+      <li>FAN FOR U에서 받은 카카오톡이나 문자를 열어요.</li>
+      <li>[팬에게 소개하기]를 누르면 언제든 이 화면이 나와요.</li>
+    </ol>
+  </section>
+
+  <footer>
+    <a href="/fanforu/">소개</a>
+    <a href="/fanforu/privacy.html">개인정보처리방침</a>
+  </footer>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js"></script>
+<script>
+(function(){
+  var SITE = 'https://pocknoq.com/fanforu/';
+  // 받는 사람이 도착할 곳. 출시 전 = 신청 페이지. 출시 후에는 설치 연결 페이지로 이 한 줄만 바꾼다.
+  var TARGET = SITE + 'signup.html';
+
+  // ?r=소개코드 (신청 때 만든 6자리). 없거나 모양이 다르면 코드 없이 'share'로 남긴다.
+  var r = '';
+  try { r = (new URLSearchParams(location.search).get('r') || '').toUpperCase(); } catch (e) {}
+  var src = /^[2-9A-HJKMNP-Z]{6}$/.test(r) ? 'r_' + r : 'share';
+  var link = TARGET + '?src=' + src;
+  var text = '좋아하는 가수 투표, 스밍, 방송 일정을 한곳에서 챙겨주는 앱이 나온대요. 여기서 신청할 수 있어요.';
+
+  var box = document.getElementById('qr');
+  if (window.qrcode) {
+    var q = qrcode(0, 'M');
+    q.addData(link);
+    q.make();
+    box.innerHTML = q.createSvgTag({ cellSize: 6, margin: 2, scalable: true });
+  } else {
+    box.textContent = link;
+  }
+
+  // 소개한 팬 수. 저장 주소는 signup.html과 같은 Apps Script(doGet ?r=코드 → {count}).
+  var ENDPOINT = 'https://script.google.com/macros/s/AKfycbwfcIGG0xuX07GL-M1ialUYv1XDKwmEbEA7Ws-bnivvY3qWU-w_EVq1WTw9f7-OZhMXIA/exec';
+  var local = /^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname) || location.protocol === 'file:';
+  function showTally(j){
+    var n = j.count;
+    document.getElementById('tallyWho').textContent = j.nick ? j.nick + ' 님의 소개 기록' : '내 소개 기록';
+    document.getElementById('tallyN').innerHTML = n > 0
+      ? '지금까지 소개하신 팬 <b>' + n + '</b>명'
+      : '첫 번째 팬을 소개해 보세요';
+    var rk = document.getElementById('tallyR');
+    if (n > 0 && j.rank > 0) { rk.textContent = '소개 랭킹 ' + j.rank + '위'; rk.hidden = false; }
+    document.getElementById('tally').hidden = false;
+  }
+  if (src !== 'share') {
+    if (local) showTally({ count: 3, rank: 12, nick: '탁이사랑' }); // 로컬 미리보기: 실제 명단을 읽지 않고 예시 값
+    else fetch(ENDPOINT + '?r=' + r).then(function(res){ return res.json(); })
+      .then(function(j){ if (j && typeof j.count === 'number') showTally(j); })
+      .catch(function(){}); // 못 읽으면 칸을 숨긴 채로 둔다
+  }
+
+  var msg = document.getElementById('msg');
+  document.getElementById('smsBtn').href = 'sms:?&body=' + encodeURIComponent(text + ' ' + link);
+
+  function copy(){
+    var all = text + ' ' + link;
+    var ok = function(){ msg.textContent = '복사했어요. 카카오톡 대화방에 붙여 넣어 주세요.'; };
+    if (navigator.clipboard) navigator.clipboard.writeText(all).then(ok, function(){ msg.textContent = all; });
+    else msg.textContent = all;
+  }
+  document.getElementById('copyBtn').addEventListener('click', copy);
+  // 휴대폰 공유창에서 카카오톡을 고른다. 공유창이 없는 PC에서는 복사로 대신한다.
+  document.getElementById('shareBtn').addEventListener('click', function(){
+    if (navigator.share) navigator.share({ title: 'FAN FOR U', text: text, url: link }).catch(function(){});
+    else copy();
+  });
+})();
+</script>
+</body>
+</html>
