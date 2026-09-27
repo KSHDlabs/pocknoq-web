@@ -118,10 +118,6 @@ footer a{font-weight:700;text-decoration:none;display:inline-flex;align-items:ce
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H8l-4 4z"/></svg>
         문자로 보내기
       </a>
-      <button class="btn alt" id="copyBtn" type="button">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h8"/></svg>
-        링크 복사하기
-      </button>
     </div>
     <p class="msg" id="msg" role="status" aria-live="polite"></p>
   </section>
@@ -195,7 +191,6 @@ footer a{font-weight:700;text-decoration:none;display:inline-flex;align-items:ce
     if (navigator.clipboard) navigator.clipboard.writeText(all).then(ok, function(){ msg.textContent = all; });
     else msg.textContent = all;
   }
-  document.getElementById('copyBtn').addEventListener('click', copy);
   // 휴대폰 공유창에서 카카오톡을 고른다. 공유창이 없는 PC에서는 복사로 대신한다.
   document.getElementById('shareBtn').addEventListener('click', function(){
     if (navigator.share) navigator.share({ text: kakaoText, url: link }).catch(function(){});
