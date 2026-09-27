@@ -9,6 +9,31 @@
       content="소식부터 스트리밍, 투표와 인증까지 한곳에서 만나는 FAN FOR U"
     />
     <title>FAN FOR U</title>
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="FAN FOR U" />
+    <meta property="og:title" content="FAN FOR U" />
+    <meta property="og:description" content="좋아하는 가수 투표·스밍·방송 일정을 한곳에서. 어떤 앱인지 먼저 둘러보세요." />
+    <meta property="og:url" content="https://pocknoq.com/fanforu/" />
+    <meta property="og:image" content="https://pocknoq.com/fanforu/og.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script>
+      // 소개 링크(?src=r_코드)로 들어온 분이 [출시 알림 받기]를 누르면 신청 페이지에도 같은 src 를 넘겨 누가 소개했는지 남긴다.
+      (function () {
+        var src = '';
+        try {
+          src = new URLSearchParams(location.search).get('src') || sessionStorage.getItem('ffu_src') || '';
+          if (!/^[A-Za-z0-9_]{1,20}$/.test(src)) src = '';
+          if (src) sessionStorage.setItem('ffu_src', src);
+        } catch (e) {}
+        if (!src) return;
+        document.addEventListener('click', function (e) {
+          var a = e.target.closest && e.target.closest('a[href*="signup.html"]');
+          if (a && a.href.indexOf('src=') < 0) a.href += (a.href.indexOf('?') < 0 ? '?' : '&') + 'src=' + encodeURIComponent(src);
+        }, true);
+      })();
+    </script>
     <script type="module" crossorigin src="/fanforu/assets/index-B3LgV9Ti.js"></script>
     <link rel="stylesheet" crossorigin href="/fanforu/assets/index-Bi03fOUi.css">
   </head>
