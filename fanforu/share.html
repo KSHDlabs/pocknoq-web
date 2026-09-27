@@ -147,12 +147,13 @@ footer a{font-weight:700;text-decoration:none;display:inline-flex;align-items:ce
   var r = '';
   try { r = (new URLSearchParams(location.search).get('r') || '').toUpperCase(); } catch (e) {}
   var src = /^[2-9A-HJKMNP-Z]{6}$/.test(r) ? 'r_' + r : 'share';
-  var link = TARGET + '?src=' + src; // QR: 옆에서 소개받는 분은 바로 신청
-  // 카톡·문자로 받는 분은 FAN FOR U 소개 페이지부터 보고 신청하게 한다. src 는 소개 페이지가 신청 버튼에 이어 붙인다.
+  var link = TARGET + '?src=' + src; // 바로 신청 (QR도 이 주소)
+  // 앱을 처음 듣는 분(특히 단톡방)을 위해 소개 페이지 링크도 같이 보낸다. src 는 소개 페이지가 신청 버튼에 이어 붙인다.
   var infoLink = SITE + '?src=' + src;
+  var links = '\n\n어떤 앱인지 보기: ' + infoLink + '\n바로 신청하기: ' + link;
   // 문자는 한 사람에게, 카카오톡은 팬 단톡방에 가는 경우가 많아 말투를 나눈다. 광고처럼 들리지 않게 '같이 보려고', '한번 보세요'.
-  var text = '나 FAN FOR U 사전신청했어요.\n방송 일정이랑 투표 같은 거 챙기기 편할 것 같아서 같이 보려고 보내요 :)\n\n어떤 앱인지 여기서 먼저 볼 수 있어요.';
-  var kakaoText = 'FAN FOR U라는 팬 앱이 나온대요.\n방송 일정이나 투표 같은 걸 한곳에서 볼 수 있다고 해서 저도 신청했어요.\n\n관심 있는 분들은 여기서 한번 보세요 :)';
+  var text = '나 FAN FOR U 사전신청했어요.\n방송 일정이랑 투표 같은 거 챙기기 편할 것 같아서 같이 보려고 보내요 :)' + links;
+  var kakaoText = 'FAN FOR U라는 팬 앱이 나온대요.\n방송 일정이나 투표 같은 걸 한곳에서 볼 수 있다고 해서 저도 신청했어요.\n\n관심 있는 분들은 한번 보세요 :)' + links;
 
   var box = document.getElementById('qr');
   if (window.qrcode) {
@@ -185,17 +186,17 @@ footer a{font-weight:700;text-decoration:none;display:inline-flex;align-items:ce
   }
 
   var msg = document.getElementById('msg');
-  document.getElementById('smsBtn').href = 'sms:?&body=' + encodeURIComponent(text + '\n' + infoLink);
+  document.getElementById('smsBtn').href = 'sms:?&body=' + encodeURIComponent(text);
 
   function copy(){
-    var all = kakaoText + '\n' + infoLink;
+    var all = kakaoText;
     var ok = function(){ msg.textContent = '복사했어요. 카카오톡 대화방에 붙여 넣어 주세요.'; };
     if (navigator.clipboard) navigator.clipboard.writeText(all).then(ok, function(){ msg.textContent = all; });
     else msg.textContent = all;
   }
   // 휴대폰 공유창에서 카카오톡을 고른다. 공유창이 없는 PC에서는 복사로 대신한다.
   document.getElementById('shareBtn').addEventListener('click', function(){
-    if (navigator.share) navigator.share({ text: kakaoText, url: infoLink }).catch(function(){});
+    if (navigator.share) navigator.share({ text: kakaoText }).catch(function(){});
     else copy();
   });
 })();
