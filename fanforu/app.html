@@ -91,6 +91,14 @@ p{margin:0;color:#DDE4FF;font-size:19px}
   var show = function(id){ document.getElementById(id).hidden = false; };
 
   if (!PLAY_URL && !APPLE_URL) { show('soon'); return; }
+
+  // 출시 알림·재안내의 [설치하기] 링크(src=m_코드)로 왔으면 명단에 "링크 누름"을 남긴다 → 설치 재안내(D)에서 빠진다.
+  // 출시 전(위에서 return)과 로컬 확인 때는 남기지 않는다. 카톡 링크 미리보기는 스크립트를 안 돌려서 기록되지 않는다.
+  var ENDPOINT = 'https://script.google.com/macros/s/AKfycbwfcIGG0xuX07GL-M1ialUYv1XDKwmEbEA7Ws-bnivvY3qWU-w_EVq1WTw9f7-OZhMXIA/exec';
+  var mine = /^m_([2-9A-HJKMNP-Z]{6})$/.exec(src);
+  if (mine && navigator.sendBeacon && !/^(localhost|127\.0\.0\.1)$/.test(location.hostname)) {
+    try { navigator.sendBeacon(ENDPOINT, new Blob([JSON.stringify({ kind: 'clicked', code: mine[1] })], { type: 'text/plain' })); } catch (e) {}
+  }
   document.getElementById('toPlay').href = play || '#';
   document.getElementById('toApple').href = APPLE_URL || '#';
   if (!PLAY_URL) document.getElementById('toPlay').hidden = true;
