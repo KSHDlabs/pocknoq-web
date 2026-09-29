@@ -163,14 +163,22 @@ details[open] summary::after{transform:rotate(-135deg);margin-top:4px}
 .share-btn.alt{background:#fff;color:var(--navy);border:2px solid var(--navy);margin-top:14px}
 .share-btn svg{width:22px;height:22px}
 .share-hint{margin:8px 0 0;font-size:16px !important;color:var(--muted)}
-/* 카카오톡 채널 추가. 채널 친구에게는 설치 안내를 카카오톡으로도 보낼 수 있다(브랜드 메시지) */
-.kch{margin:20px 0 0}
-.kch-btn{display:flex;width:100%;align-items:center;justify-content:center;gap:10px;min-height:62px;
+/* 신청 저장 직후, 완료 화면 전에 나오는 카카오톡 채널 추가 단계.
+   채널 친구에게는 출시 뒤 설치 안내를 카카오톡으로도 보낼 수 있다(브랜드 메시지) */
+.kstep{text-align:center;padding:10px 0 4px}
+.kstep .kicon{width:88px;height:88px;margin:4px auto 18px;border-radius:50%;background:#FEE500;display:grid;place-items:center;
+  box-shadow:0 0 0 10px rgba(254,229,0,.18)}
+.kstep .kicon svg{width:44px;height:44px;color:#191919}
+.kstep .kstep-t{margin:0 0 4px;font-size:16px;font-weight:800;color:var(--navy)}
+.kstep h2{margin:0 0 8px;font-size:28px;line-height:1.35;font-weight:900;color:var(--ink);letter-spacing:-.03em}
+.kstep p{margin:0;font-size:19px}
+.kch-btn{display:flex;width:100%;align-items:center;justify-content:center;gap:10px;min-height:62px;margin-top:24px;
   border-radius:18px;background:#FEE500;color:#191919;font-size:20px;font-weight:800;text-decoration:none;
   transition:transform .5s var(--ease)}
 .kch-btn:active{transform:scale(.985)}
 .kch-btn svg{width:24px;height:24px}
-.kch-hint{margin:8px 0 0;font-size:16px !important;color:var(--muted)}
+.kskip{display:inline-flex;align-items:center;min-height:48px;margin-top:10px;padding:0 8px;border:0;background:none;
+  font:inherit;font-size:16px;color:var(--muted);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
 
 .note{margin:18px 0 0;font-size:16px;color:#28366B;background:var(--blue-l);border-radius:16px;padding:16px 18px;line-height:1.65}
 
@@ -317,6 +325,20 @@ footer p{margin:6px 0 0}
     <p class="err form-err" id="sendErr" role="alert">신청을 보내지 못했어요. 잠시 뒤 다시 눌러 주세요.</p>
   </form>
 
+  <div class="kstep" id="kstep" hidden tabindex="-1">
+    <div class="kicon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C6.5 3 2 6.6 2 11c0 2.8 1.9 5.3 4.7 6.7l-1 3.6c-.1.3.3.6.6.4l4.2-2.8c.5.1 1 .1 1.5.1 5.5 0 10-3.6 10-8S17.5 3 12 3z"/></svg>
+    </div>
+    <p class="kstep-t">마지막 단계예요</p>
+    <h2>카카오톡 채널을<br>추가해 주세요</h2>
+    <p>출시 후 알림과 소식 안내를<br>카카오톡으로 받으세요.</p>
+    <a class="kch-btn" id="kchBtn" href="https://pf.kakao.com/_SPQaX/friend" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3C6.5 3 2 6.6 2 11c0 2.8 1.9 5.3 4.7 6.7l-1 3.6c-.1.3.3.6.6.4l4.2-2.8c.5.1 1 .1 1.5.1 5.5 0 10-3.6 10-8S17.5 3 12 3z"/></svg>
+      FAN FOR U 채널 추가
+    </a>
+    <button class="kskip" id="kchSkip" type="button">카카오톡을 쓰지 않으면 건너뛰기</button>
+  </div>
+
   <div class="done" id="done" hidden tabindex="-1">
     <div class="check" aria-hidden="true">
       <svg viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
@@ -326,14 +348,6 @@ footer p{margin:6px 0 0}
     <p class="big" id="doneNum"></p>
     <div class="box">
       <p>안내에 있는 링크를 누르면 바로 설치 화면으로 이동해요. 가족분이 대신 설치해 드려도 괜찮아요.</p>
-    </div>
-
-    <div class="kch">
-      <a class="kch-btn" href="https://pf.kakao.com/_SPQaX/friend" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3C6.5 3 2 6.6 2 11c0 2.8 1.9 5.3 4.7 6.7l-1 3.6c-.1.3.3.6.6.4l4.2-2.8c.5.1 1 .1 1.5.1 5.5 0 10-3.6 10-8S17.5 3 12 3z"/></svg>
-        FAN FOR U 채널 추가
-      </a>
-      <p class="kch-hint">카카오톡 채널을 추가하고 출시 후 알림과 소식 안내를 받으세요.</p>
     </div>
 
     <div class="share">
@@ -479,13 +493,11 @@ footer p{margin:6px 0 0}
       ? fetch(ENDPOINT, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(payload) })
       : Promise.resolve();
 
+    // 저장이 끝나면 카카오톡 채널 추가 단계 → (채널 추가 또는 건너뛰기) → 신청 완료
     send.then(function(){
       document.getElementById('doneNum').textContent = d.slice(0,3) + '-****-' + d.slice(7);
       f.hidden = true;
-      var done = document.getElementById('done');
-      done.hidden = false;
-      done.focus();
-      document.getElementById('apply').scrollIntoView({ behavior: 'smooth' });
+      showPanel('kstep');
     }).catch(function(){
       btn.removeAttribute('aria-disabled');
       btn.disabled = false;
@@ -493,6 +505,16 @@ footer p{margin:6px 0 0}
       document.getElementById('sendErr').classList.add('on');
     });
   });
+
+  function showPanel(id) {
+    ['kstep', 'done'].forEach(function(k){ document.getElementById(k).hidden = k !== id; });
+    var el = document.getElementById(id);
+    el.focus();
+    document.getElementById('apply').scrollIntoView({ behavior: 'smooth' });
+  }
+  // 채널 추가 링크는 새 창(카카오톡)으로 열리고, 이 페이지는 신청 완료로 넘어간다
+  document.getElementById('kchBtn').addEventListener('click', function(){ showPanel('done'); });
+  document.getElementById('kchSkip').addEventListener('click', function(){ showPanel('done'); });
 
   // ── 완료 화면 공유 ──
   // 가족에게: 번호를 우리가 받지 않고, 본인 문자 앱에서 직접 보내게 한다.
